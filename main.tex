@@ -33,6 +33,13 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 
+\usepackage{fancyhdr}
+
+\fancyhead{} % Clears all page headers and footers
+\rhead{\thepage} % Sets the right side header to show the page number
+\lhead{} % Clears the left side page header
+
+\pagestyle{fancy}
 
 
 %
@@ -103,19 +110,8 @@
 \input{Frontmatter/sommario}
 \input{Frontmatter/summary}
 
+\input{Frontmatter/ringraziamenti}
 
-
-
-
-
-\italiano
-\ringraziamenti
-
-I candidati ringraziano vivamente il Granduca di Toscana per i mezzi
-messi loro a disposizione, ed il signor Von Braun, assistente del
-prof.~Albert Einstein, per le informazioni riservate che egli ha
-gentilmente fornito loro, e per le utili discussioni che hanno permesso
-ai candidati di evitare di riscoprire l'acqua calda.
 
 \tablespagetrue\figurespagetrue % normalmente questa riga non serve ed e' commentata
 
@@ -124,7 +120,7 @@ ai candidati di evitare di riscoprire l'acqua calda.
 
 \mainmatter
 
-
+\input{Capitoli/TemplateCapitolo}
 
 
 

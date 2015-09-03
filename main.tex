@@ -1,0 +1,131 @@
+% !TEX encoding = utf8
+% !TEX root = main.tex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Esempio con molte opzioni
+\documentclass[11pt,twoside,oldstyle,autoretitolo,classica,greek]{toptesi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Commentare la riga seguente se si è specificata l'opzione "pdfa"
+\usepackage{hyperref}
+
+\hypersetup{%
+    pdfpagemode={UseOutlines},
+    bookmarksopen,
+    pdfstartview={FitH},
+    colorlinks,
+    linkcolor={blue},
+    citecolor={red},
+    urlcolor={blue}
+  }
+%
+%%%%%%% Esempio di composizione di tesi di laurea con PDFLATEX <---------------- !
+%
+\usepackage[utf8]{inputenc}% per macchine Linux/Mac/UNIX/Windows; sarebbe meglio utf8
+\usepackage[T1]{fontenc}\usepackage{lmodern}
+\usepackage[italian,english]{babel}
+
+
+%%%%%%%%%%%%------PACCHETTI AGGIUNTIVI------%%%%%%%%%%%%
+\graphicspath{{Immagini/}} % Specifies the directory where pictures are stored
+\usepackage[square, numbers, comma, sort&compress]{natbib} 
+\usepackage{subfigure}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+
+
+%
+% Per scrivere testo fasullo in "latinorum"
+\usepackage{lipsum}
+%
+
+%%%%%%% Definizioni locali
+\newtheorem{osservazione}{Osservazione}% Standard LaTeX
+
+
+\begin{document}
+\interlinea{1.5}
+\ateneo{Universit\`a degli Studi di Genova}
+%
+%%%%%%%%%%%%%%%%%%%%%
+%
+
+%
+\FacoltaDi{Facoltà di Ingegneria}
+
+\titolo{La pressione barometrica di~Giove}% per la laurea quinquennale e il dottorato
+\sottotitolo{Feature extraction for high resolution remote sensing image classification using histograms of oriented gradients}% per la laurea quinquennale e il dottorato
+%
+
+\TesiDiLaurea{Tesi di Laurea Triennale}
+%%%%%%% Corso degli studi
+\corsodilaurea{Ingegneria Elettronica e Tecnologie dell'Informazione}% per la laurea
+
+
+%%%%%%% Per inserire la matricola rientrato sotto il nome di ogni candidato.
+%\renewcommand*\IDN{\\\quad matricola: }
+%
+\candidato{Margherita \textsc{Piccini}}% per tutti i percorsi
+\secondocandidato{Simone \textsc{Rossi}}% per la laurea magistrale solamente
+\terzocandidato{Eugenio \textsc{Zuccarelli}}
+
+
+\relatore{Prof.\ Gabriele Moser}% per la laurea e/o il dottorato
+\secondorelatore{Dott. Vladimir Krylov}% per la laurea magistrale
+
+
+%%%%%%% Seduta dell'esame
+%\sedutadilaurea{Agosto 1615}% per la laurea quinquennale; oppure:
+\sedutadilaurea{\textsc{Anno~accademico} 2014-2015}% per la laurea magistrale
+%\esamedidottorato{Novembre 1610}% per il dottorato
+%\annoaccademico{1615-1616}% solo con l'opzione classica
+%\annoaccademico{2006-2007}% idem
+%\ciclodidottorato{XV}% solo per il dottorato
+
+%%%%%%% Logo della sede
+\logosede[4cm]{logo}% questo e' ovviamente facoltativo, ma e' richiesto per
+% il dottorato al PoliTO; in questo caso si usa il "logopolito", il nome senza
+% estensione del file che contiene in forma grafica il logo.
+%
+%%%%%%% Per cambiare l'offset per la rilegatura; meno offset c'e', meglio e'
+%\setbindingcorrection{3mm}
+
+\iflanguage{english}{%
+	\sommario{Abstract}}
+
+
+\frontespizio
+
+%\sommario
+
+\input{Frontmatter/citazione}
+\input{Frontmatter/sommario}
+\input{Frontmatter/summary}
+
+
+
+
+
+
+\italiano
+\ringraziamenti
+
+I candidati ringraziano vivamente il Granduca di Toscana per i mezzi
+messi loro a disposizione, ed il signor Von Braun, assistente del
+prof.~Albert Einstein, per le informazioni riservate che egli ha
+gentilmente fornito loro, e per le utili discussioni che hanno permesso
+ai candidati di evitare di riscoprire l'acqua calda.
+
+\tablespagetrue\figurespagetrue % normalmente questa riga non serve ed e' commentata
+
+\indici
+
+
+\mainmatter
+
+
+
+
+
+\end{document}

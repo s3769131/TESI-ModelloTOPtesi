@@ -1,0 +1,15 @@
+% !TEX encoding = utf8
+% !TEX root = ../main.tex
+
+
+\chapter{Introduzione}
+\label{Introduzione}
+
+%La disponibilità di immagini satellitari per l'osservazione della Terra offre l'opportunità di avere immagini spazialmente e temporalmente uniformemente distribuite, di porzioni di superficie terrestre su diversa scala.\\
+%Sensori passivi aviotrasportati acquisiscono immagini multispettrali con diversa risoluzione spettrale, in cui a ogni canale è associata una immagine in scala di grigio corrispondente ad un limitato intervallo di lunghezze d'onda dello spettro elettromagnetico. 
+%Negli anni è aumentata la richiesta di disponibilità di mappe tematiche che definiscano la categoria a cui differenti porzioni di suolo appartengono.\\
+%La costruzione automatizzata di queste carte è possibile grazie all'uso di tecniche di classificazione supervisionata di immagini.
+%In quest'ottica, classificare immagini multispettrali con un così ampio numero di classi da distinguere è una sfida.\\
+
+Questo documento è costituito nel seguente modo: nel Capitolo \ref{cap:telerilevamento} viene introdotto il problema del telerilevamento, con accenni alle tipologie di sensori utilizzabili, ai tipi di classificatori e allo stato dell'arte delle varie strategie per l'estrazione di informazioni aggiuntive per il miglioramento della classificazione; nel Capitolo \ref{cap:hog}, invece, è presente un'analisi dettagliata dell'algoritmo di \emph{detection} introdotto da Dalal e Triggs \citep{Art_HOGHuman} con particolare riferimento alle modifiche da noi apportate necessarie per l'uso di questo approccio al contesto del telerilevamento. Il Capitolo \ref{cap:svm} propone la trattazione matematica della teoria alla base del classificatore SVM, successivamente utilizzato per la fase di implementazione e test. 
+Nel Capitolo \ref{cap:risultati} si procede con una analisi puntuale e precisa dei risultati ottenuti con l'implementazione dell'algoritmo HOG e della SVM, valutandone la potenzialità, i punti di forza e debolezza e le situazioni nelle quali è vantaggioso o no utilizzarlo, basandoci sugli indici di accuratezza introdotti nel Capitolo \ref{cap:prestazioni}.

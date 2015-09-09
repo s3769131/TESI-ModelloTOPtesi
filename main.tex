@@ -3,7 +3,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Esempio con molte opzioni
-\documentclass[11pt,twoside,oldstyle,autoretitolo,classica,greek]{toptesi}
+\documentclass[11pt,twoside,oldstyle,classica,greek]{toptesi}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Commentare la riga seguente se si è specificata l'opzione "pdfa"
@@ -32,36 +32,50 @@
 \usepackage{subfigure}
 \usepackage{tikz}
 \usepackage{pgfplots}
+%\usepackage{indentfirst}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{siunitx}
+%\usepackage{fancyhdr}
 
-\usepackage{fancyhdr}
+%\fancyhead{} % Clears all page headers and footers
+%\rhead{\thepage} % Sets the right side header to show the page number
+%\lhead{} % Clears the left side page header
 
-\fancyhead{} % Clears all page headers and footers
-\rhead{\thepage} % Sets the right side header to show the page number
-\lhead{} % Clears the left side page header
-
-\pagestyle{fancy}
+%\pagestyle{fancy}
 
 
 %
 % Per scrivere testo fasullo in "latinorum"
 \usepackage{lipsum}
-%
+
+
+\newcommand{\twopartdef}[4]
+{
+	\left\{
+		\begin{array}{ll}
+			#1 & \mbox{per } #2 \\
+			#3 & \mbox{per } #4
+		\end{array}
+	\right.
+}
+
 
 %%%%%%% Definizioni locali
-\newtheorem{osservazione}{Osservazione}% Standard LaTeX
+\newtheorem{teorema}{Teorema}% Standard LaTeX
 
 
 \begin{document}
-\interlinea{1.5}
+\interlinea{1.7}
 \ateneo{Universit\`a degli Studi di Genova}
 %
 %%%%%%%%%%%%%%%%%%%%%
 %
 
 %
-\FacoltaDi{Facoltà di Ingegneria}
+\FacoltaDi{Scuola Politecnica}
 
-\titolo{La pressione barometrica di~Giove}% per la laurea quinquennale e il dottorato
+\titolo{Estrazione di \emph{feature} per classificazione di immagini telerilevate ad alta risoluzione mediante istogrammi di gradienti orientati}% per la laurea quinquennale e il dottorato
 \sottotitolo{Feature extraction for high resolution remote sensing image classification using histograms of oriented gradients}% per la laurea quinquennale e il dottorato
 %
 
@@ -73,7 +87,7 @@
 %%%%%%% Per inserire la matricola rientrato sotto il nome di ogni candidato.
 %\renewcommand*\IDN{\\\quad matricola: }
 %
-\candidato{Margherita \textsc{Piccini}}% per tutti i percorsi
+\candidata{Margherita \textsc{Piccini}}% per tutti i percorsi
 \secondocandidato{Simone \textsc{Rossi}}% per la laurea magistrale solamente
 \terzocandidato{Eugenio \textsc{Zuccarelli}}
 
@@ -84,9 +98,9 @@
 
 %%%%%%% Seduta dell'esame
 %\sedutadilaurea{Agosto 1615}% per la laurea quinquennale; oppure:
-\sedutadilaurea{\textsc{Anno~accademico} 2014-2015}% per la laurea magistrale
+%\sedutadilaurea{\textsc{Anno~accademico} 2014-2015}% per la laurea magistrale
 %\esamedidottorato{Novembre 1610}% per il dottorato
-%\annoaccademico{1615-1616}% solo con l'opzione classica
+\annoaccademico{2014-2015}% solo con l'opzione classica
 %\annoaccademico{2006-2007}% idem
 %\ciclodidottorato{XV}% solo per il dottorato
 
@@ -106,11 +120,11 @@
 
 %\sommario
 
-\input{Frontmatter/citazione}
-\input{Frontmatter/sommario}
-\input{Frontmatter/summary}
+\input{Frontmatter/Citazione}
+\input{Frontmatter/Sommario}
+\input{Frontmatter/Summary}
 
-\input{Frontmatter/ringraziamenti}
+\input{Frontmatter/Ringraziamenti}
 
 
 \tablespagetrue\figurespagetrue % normalmente questa riga non serve ed e' commentata
@@ -120,8 +134,22 @@
 
 \mainmatter
 
-\input{Capitoli/TemplateCapitolo}
+\input{Capitoli/1Introduzione}
+\input{Capitoli/2Telerilevamento}
+\input{Capitoli/3HOG}
+\input{Capitoli/4SVM}
+%\input{Capitoli/5Risultati}
 
+%\input{Capitoli/TemplateCapitolo}
+
+
+\label{Bibliography}
+
+%\lhead{\emph{Bibliografia}} % Change the page header to say "Bibliography"
+
+\bibliographystyle{acm} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
+\nocite{*}
+\bibliography{Bibliography} % The references (bibliography) information are stored in the file named "Bibliography.bib"
 
 
 \end{document}

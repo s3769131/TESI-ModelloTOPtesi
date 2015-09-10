@@ -66,7 +66,7 @@ Il \emph{dataset} per ogni esperimento è costituito dall'immagine telerilevata,
 Le immagini telerilevate sono state acquisite dal sensore passivo \textsc{SPOT5 HRG} con risoluzione spettrale a tre canali, corrispondenti alle lunghezze d'onda del verde (G, $495–570\text{ } nm$), del rosso (R, $620–750\text{ } nm$) e dell'infrarosso (NIR, \emph{Near InfraRed} $0.75–1.4\text{ } \mu m$).
  
 
-\subsection{Amiens 2006 - 5 \textit{m}}
+\subsection{Amiens 2006 - 5m - 10 classi}
 L'immagine \emph{Amiens6--5m} è stata acquisita nel 2006 e ha risoluzione di $5\text{ }m/\text{pixel}$, coprendo approssimativamente un'area di $10\text{ }km\times11\text{ }km$ ($2000\times2200$ pixel).\\
 L'insieme delle classi $\Omega=\left\lbrace\omega_1,\omega_2,\ldots,\omega_{10}\right\rbrace$ che costituisce questo primo esperimento è il seguente:
 \begin{enumerate}
@@ -81,8 +81,7 @@ L'insieme delle classi $\Omega=\left\lbrace\omega_1,\omega_2,\ldots,\omega_{10}\
 \item Corsi d'acqua
 \item Bacini idrografici
 \end{enumerate}
-Nella Figura \ref{fig: Amiens65m} vengono presentate le immagini caratterizzanti il primo \emph{dataset}; si osservi con attenzione la composizione dell'immagine di \emph{training}: 
-\\INSERIRE DISCORSO SU NUMERO DI PIXEL DI TRAINING PER CLASSI
+Nella Figura \ref{fig: Amiens65m} vengono presentate le immagini caratterizzanti il primo \emph{dataset}. 
 
 \clearpage
 \begin{figure}[!ht]
@@ -99,7 +98,7 @@ Nella Figura \ref{fig: Amiens65m} vengono presentate le immagini caratterizzanti
   \end{figure}
   
 \clearpage
-\subsection{Amiens 2006 - 2.5 \textit{m}}
+\subsection{Amiens 2006 - 2.5m - 7 classi}
 L'immagine \emph{Amiens6--2.5m} è stata acquisita sempre nel 2006, ma ha una risoluzione  spaziale maggiore del caso precedente di $2.5\text{ }m/\text{pixel}$  e copre sempre approssimativamente un'area di $10\text{ }km\times11\text{ }km$ ($4001\times4400$ pixel).\\
 L'insieme delle classi $\Omega=\left\lbrace\omega_1,\omega_2,\ldots,\omega_{7}\right\rbrace$ che costituisce il secondo \emph{dataset} è il seguente:
 \begin{enumerate}
@@ -111,8 +110,22 @@ L'insieme delle classi $\Omega=\left\lbrace\omega_1,\omega_2,\ldots,\omega_{7}\r
 \item Alberi
 \item Acqua
 \end{enumerate}
-Nella Figura \ref{fig: Amiens62_5m} vengono presentate le immagini caratterizzanti il primo \emph{dataset}; si osservi con attenzione la composizione dell'immagine di \emph{training}: INSERIRE DISCORSO SU NUMERO DI PIXEL DI TRAINING PER CLASSI
+Nella Figura \ref{fig: Amiens62_5m} vengono presentate le immagini caratterizzanti il secondo \emph{dataset}. Nella Figura \ref{fig:3classi} sono riportate, per una migliore comprensione, la distribuzione dei pixel di training di tre classi diverse (nero = strade, blu = acqua, verde = aree vegetate).
+
+ \begin{figure}[!ht]
+\center  
+\subfigure{
+      \includegraphics[width=0.3\textwidth]{AssiRG_3classi}}
+\subfigure{ 
+		 \includegraphics[width=0.3\textwidth]{AssiGB_3classi}}
+		
+    \caption{Analisi della distribuzione di tre classi in due diverse prospettive}
+    \label{fig:3classi}
+  \end{figure}
+
+
 \clearpage
+
 \begin{figure}[!ht]
    \center
    \subfigure[Immagine telerilevata]{
@@ -122,13 +135,13 @@ Nella Figura \ref{fig: Amiens62_5m} vengono presentate le immagini caratterizzan
      \hspace{4mm}
     \subfigure[Legenda classi della mappa di \emph{training}]{
       \includegraphics[scale=0.5]{Leggenda_7classi}}
-    \caption{\emph{Dataset} con immagine RBG in falso colore ($4000\times4400$ pixel) acquisita su Amiens (Francia) dal sensore \textsc{SPOT5 HRG} nel 2006}
+    \caption{\emph{Dataset} con immagine RBG in falso colore ($4001\times4400$ pixel) acquisita su Amiens (Francia) dal sensore \textsc{SPOT5 HRG} nel 2006}
     \label{fig: Amiens62_5m}
   \end{figure}
 \clearpage
 
 
-\subsection{Amiens 2012 - 2.5 \textit{m}}
+\subsection{Amiens 2012 - 2.5m - 7 classi}
 L'immagine \emph{Amiens12--2.5m} è stata acquisita nel 2012 ed ha  risoluzione spaziale di $2.5\text{ }m/\text{pixel}$, coprendo sempre un'area di circa $10\text{ }km\times11\text{ }km$ ($4001\times4400$ pixel).\\
 L'insieme delle classi $\Omega=\left\lbrace\omega_1,\omega_2,\ldots,\omega_{7}\right\rbrace$, che costituisce il \emph{dataset}, è lo stesso del precedente. Per uniformità vengono ugualmente riportate:
 \begin{enumerate}
@@ -151,14 +164,14 @@ Nella Figura \ref{fig: Amiens122_5m} vengono presentate le immagini caratterizza
      \hspace{4mm}
     \subfigure[Legenda classi della mappa di \emph{training}]{
       \includegraphics[scale=0.5]{Leggenda_7classi}}
-    \caption{\emph{Dataset} con immagine RBG in falso colore ($4000\times4400$ pixel) acquisita su Amiens (Francia) dal sensore \textsc{SPOT5 HRG} nel 2012}
+    \caption{\emph{Dataset} con immagine RBG in falso colore ($4001\times4400$ pixel) acquisita su Amiens (Francia) dal sensore \textsc{SPOT5 HRG} nel 2012}
     \label{fig: Amiens122_5m}
   \end{figure}
 \clearpage
 
 \section{Descrizione del classificatore SVM}
 Il classificatore usato è un classificatore \emph{soft-margin} SVM con $C=X$ e \emph{kernel} gaussiano a $\sigma = $. L'implementazione usata è una variante \emph{ad hoc} della \texttt{LIBSVM} [RIF] scritta in \texttt{C++}.\\
-Il setup utilizzato per la fase di classificazione è composto da un \texttt{MacBookPro Retina} con un processore dual core Intel Core i5 $2.8$ GHz e $16$ GB di memoria e un iMac con processore quad core Intel Core i7 $3.4$ GHz e $8$ GB di memoria. \\
+Il setup utilizzato per la fase di classificazione è composto da un \texttt{MacBookPro Retina} con un processore dual core Intel Core i5 $2.8$ GHz e $16$ GB di memoria e un \texttt{iMac} con processore quad core Intel Core i7 $3.4$ GHz e $8$ GB di memoria. \\
 
 La fase di \emph{training} della SVM, la quale ha complessità temporale $O(n^\alpha)$ polinomialmente proporzionale al numero di vettori di \emph{training}, ha impiegato, in media, 30 minuti per completare l'ottimizzazione dei parametri, mentre la fase di etichettatura (con complessità $O(n)$ dove $n$ è il numero di vettori da etichettare) ha impiegato, in media, un'ora.
 
@@ -171,7 +184,7 @@ Qui di seguito verranno presentate le variazioni di precisione del nostro algori
 La pulitura del rumore è stata effettuata, come già illustrato in figura[], tramite un filtraggio passa-basso attraverso una gaussiana bi-dimensionale avente varianza $\sigma$ pari a 2 pixel e media nulla. Si può chiaramente vedere dalla tabella, come, applicando questa gaussiana sia sull'immagine in ingresso all'algoritmo HOG sia sulle immagini HOG risultanti, si abbia un incremento della \emph{overall accuracy} pari a ....
 
 \subsection{Calcolo dei gradienti}
-Per quanto riguarda la scelta della maschera da utilizzare per il calcolo del gradiente, sono state valutate diverse opzioni, tra cui la semplice maschera in $1D$ a differenze separate $[-1, 0 ,1]^T$, la maschera cubica $[1,-8,0,8,-1]$ e filtri  $2D$ più classici come le matrici di Prewitt e Sobel.\\
+Per quanto riguarda la scelta della maschera da utilizzare per il calcolo del gradiente, sono state valutate diverse opzioni, tra cui la semplice maschera in $1D$ a differenze separate $[-1, 0 ,1]$, la maschera cubica $[1,-8,0,8,-1]$ e filtri  $2D$ più classici come le matrici di Prewitt e Sobel.\\
 I risultati migliori sono stati ottenuti con il \emph{kernel} più semplice a $1D$ $3\times1$. Variazioni sulla maschera utilizzata non hanno modificato così tanto i risultati per giustificare un aumento computazionale dovuto all'utilizzo di filtri più complessi. Per questo motivo abbiamo deciso di utilizzare in tutti e tre i casi la soluzione più semplice e ottimale.\\
 
 La fase del gradiente è stata considerata tra $0$ e $180$ (ignorandone quindi il segno) in quanto le strutture geometriche di cui ci interessa avere informazioni (quali strade, fiumi, \ldots) possono essere identificate univocamente dalla direzione e non è invece rilevante il verso del gradiente.
@@ -312,7 +325,7 @@ Quest'immagine è il risultato della fusione di tre mappe tematiche (strade prin
 
 \begin{figure}[!ht]
 \center
-\includegraphics[width=0.5\textwidth]{amiens6_roads}
+\includegraphics[width=0.8\textwidth]{amiens6_roads}
 \caption{Immagine binaria della struttura cartografica delle strade di Amiens: le strade sono rappresentate con il  bianco e lo sfondo in nero.}
 \label{fig:immagine_roads}
 \end{figure}

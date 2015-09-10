@@ -332,7 +332,7 @@ La situazione che si è andata a definire, graficamente, appare in Figura \ref{f
   \end{figure}
 
 Il nuovo vincolo permette al margine funzionale di essere minore di 1. L'errore che si commette è, però, $C\xi_i$, sia per i punti che ricadrebbero nella parte corretta dell'iperpiano separatore ($0<\xi_i\leq1$), sia per quelli che sarebbero nel lato sbagliato ($\xi>1$).
-Si sono, quindi, "rilassati" i vincoli in modo tale da classificare dati non-separabili, con una penalità linearmente proporzionale all'entità dell'errore commesso sul training set.\\
+Si sono, quindi, "rilassati" i vincoli in modo tale da classificare dati non-separabili, con una penalità linearmente proporzionale all'entità dell'errore commesso sul \emph{training set}.\\
 
 Il nuovo problema di ottimizzazione è il seguente:
 \begin{eqnarray}
@@ -341,7 +341,7 @@ Il nuovo problema di ottimizzazione è il seguente:
 &\text{vincolato a }&y_i\left (\mathbf{x}_i\cdot\mathbf{w}+b \right )\geq1-\xi_i\\
 && \xi_i\geq0, \quad \forall i=1,\ldots,N
 \end{eqnarray}
-La costante $C$ (con $C\geq0$) gestisce il compromesso fra la minimizzazione dei due contributi alla funzione obiettivo: se $C=0$ gli errori sul training set non sono penalizzati; se $C$ è molto grande, il termine legato al margine è minoritario e gli errori sul training set sono molto penalizzati.
+La costante $C$ (con $C\geq0$) gestisce il compromesso fra la minimizzazione dei due contributi alla funzione obiettivo: se $C=0$ gli errori sul \emph{training set} non sono penalizzati; se $C$ è molto grande, il termine legato al margine è minoritario e gli errori sul \emph{training set} sono molto penalizzati.
 \\
 Allo stesso modo del caso lineare, possono essere usati i moltiplicatori di Lagrange; la funzione da ottimizzare quindi è la seguente:
 \begin{equation}
@@ -351,7 +351,7 @@ L=\dfrac{1}{2}\vert\vert\mathbf{w}\vert\vert^2+C\sum_i\xi_i+\sum_i\alpha_i\left 
 dove $\beta_i$ sono i moltiplicatori di Lagrange necessari per vincolare la positività della \emph{variabile slack}.	
 \\
 
-\'E interessante notare come l'applicazione di una soft-margin SVM possa avere prestazioni migliori della hard-margin SVM anche per dataset linearmente separabili. Per chiarificarne il motivo, un esempio è riportato nella figura successiva: il training set permetterebbe l'uso di una hard-margin SVM, ma il risultato  avrebbe un margine piuttosto limitato, confrontato con quello che si otterrebbe in caso di soft-margin SVM. \\
+\'E interessante notare come l'applicazione di una soft-margin SVM possa avere prestazioni migliori della hard-margin SVM anche per dataset linearmente separabili. Per chiarificarne il motivo, un esempio è riportato nella figura successiva: il \emph{training set} permetterebbe l'uso di una hard-margin SVM, ma il risultato  avrebbe un margine piuttosto limitato, confrontato con quello che si otterrebbe in caso di soft-margin SVM. \\
  \begin{figure}[!ht]
  \centering
  \subfigure[Hard Margin SVM]
@@ -427,7 +427,7 @@ dove $\beta_i$ sono i moltiplicatori di Lagrange necessari per vincolare la posi
 Nonostante l'introduzione della variante Soft-Margin della SVM possa il qualche caso tornare utile, può capitare che anche questa strategia sia difficilmente applicabile o produca risultati non soddisfacenti (si rimanda al Capitolo X dove si discuterà come avere una stima delle prestazioni di un classificatore).
 \\
 
-L'intento della classificazione SVM non-lineare è quello di trasformare lo spazio dei vettori di training non linearmente separabili $\mathbb{R}^d$ in uno spazio $\mathcal{H}$ (la cui dimensionalità sarà maggiore di $d$ o anche, potenzialmente, infinita) in cui i campioni siano disposti in modo tale da permettere l'utilizzo di una SVM lineare. Questo passo si giustifica tramite il \emph{Teorema di Cover sulla separabilità}, il quale afferma che un problema di classificazione complesso, formulato attraverso una trasformazione non-lineare dei dati in uno spazio ad alta dimensionalità, ha maggiore probabilità di essere linearmente separabile che in uno spazio a bassa dimensionalità.
+L'intento della classificazione SVM non-lineare è quello di trasformare lo spazio dei vettori di \emph{training} non linearmente separabili $\mathbb{R}^d$ in uno spazio $\mathcal{H}$ (la cui dimensionalità sarà maggiore di $d$ o anche, potenzialmente, infinita) in cui i campioni siano disposti in modo tale da permettere l'utilizzo di una SVM lineare. Questo passo si giustifica tramite il \emph{Teorema di Cover sulla separabilità}, il quale afferma che un problema di classificazione complesso, formulato attraverso una trasformazione non-lineare dei dati in uno spazio ad alta dimensionalità, ha maggiore probabilità di essere linearmente separabile che in uno spazio a bassa dimensionalità.
 \\
 Si ricerca quindi una funzione di trasformazione:
 \begin{equation}

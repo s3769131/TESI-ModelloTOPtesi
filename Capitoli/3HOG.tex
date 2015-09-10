@@ -259,7 +259,7 @@ I descrittori HOG racchiudono le statistiche locali dei gradienti (modulo e fase
 Detto $ n_{\theta}$ il numero di \emph{angle bins} e posto ${\phi_{k}}={\frac{180 \cdot k}{n_{\theta}}}$, con $k=0...n_{\theta}$, e dette $n_{x}$ e $n_{y}$ il numero di celle rispettivamente sulla riga e sulla colonna dell'immagine, si costruisce una matrice tridimensionale di dimensione $n_{x}\times n_{y} \times n_{\theta}$ data da:
 \begin{equation}
 \label{eq:euquazione_matrice_voti}
-V(i,j,k)=f(G(i,j))\delta(\phi_{k-1} <\theta(i,j) \leq\phi_{k}), \quad \text{con} \quad k=1...n_{\theta}
+V(i,j,k)=f\left [G(i,j)\right ]\delta(\phi_{k-1} <\theta(i,j) \leq\phi_{k}), \quad \text{con} \quad k=1,\ldots,n_{\theta}
 \end{equation}
 dove $ \delta(x)$ restituisce $1$ quando l'argomento è vero, $0$ quando è falso e $f$ è una funzione del modulo del gradiente (lineare, radice quadrata, quadrato o una forma saturata tra quelle riportate per rappresentare la presenza o assenza di contorni).
 

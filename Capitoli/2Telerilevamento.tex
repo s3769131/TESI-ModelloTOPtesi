@@ -167,9 +167,42 @@ Dato un insieme $\Omega =\lbrace\omega_1,\ldots, \omega_c\rbrace$ costituito da 
 \\
 
 Il \emph{training set} è l'insieme dei pixel di cui è nota a priori l'etichetta di classe ed è definito dall'insieme delle coppie $\left\lbrace \mathbf{x}_i,y_i \right\rbrace $, $i=1,\ldots,N$ con $N$ il numero di vettori di \emph{training} scelti. L'insieme di tali etichette rappresenta un'ulteriore immagine, detta  \emph{mappa di training}, che evidenzia alcuni pixel dell'immagine assegnati a ciascuna classe, distinguendoli dai "pixel di sfondo", cioè quei pixel per i quali l'etichetta di classe è incognita.
+\\
+Il processo di classificazione, come già accennato precedentemente, è diviso in due passi: \emph{learning} e \emph{prediction} (fase di addestramento e fase di predizione). Lo scopo della fase di \emph{learning} è quello di costruire un modello di classificatore, tramite la definizione di una \emph{regola di decisione} (o anche detta \emph{funzione discriminante}). \\
+In termini generali, la \emph{regola di decisione} è una funzione $f:\mathbb{R}^d\rightarrow\mathbb{R}$ modellata sulla base dell'andamento statistico del \emph{training set} in modo tale che $f$ valutata per un pixel incognito restituisca una stima dell'etichetta da associarci. Le funzioni discriminanti possono essere definite con vari metodi, cui corrispondono varie tecniche di classificazione (nel Capitolo \ref{cap:svm} ne viene descritto uno dei possibili). \\
+Conclusa questa fase, si procede con la classificazione vera e propria: si scansiona l'intera immagine valutando ogni pixel tramite la \emph{regola di decisione}, realizzando, in questo modo, una stima della mappa di classificazione.
+
+\tikzstyle{block} = [rectangle, draw, %fill=blue!20, 
+     text width=8em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{arrow} = [draw, -latex]
+\tikzstyle{line} = [draw]
 
 
+\begin{figure}[!ht]
+\center
+\begin{tikzpicture}
+\node[](training) at (0,0) {$\left\lbrace \mathbf{x}_i,y_i \right\rbrace $};
+\node[] at (0,.5){Training set};
+\node[block] (addestramento) at (4,0) {Addestramento};
+\node[](decision_rule) at (10,0) {Regola di decisione};
+\node[](node1) at (7,.1){};
+\node[block](prediction) at (7,-2) {Predizione};
 
+\node[](image) at (3,-2) {$ \mathbf{X}(m,n)$};
+\node[] at (3,-1.5){Immagine};
+
+\node[]() at (11,-1.5) {Mappa di classificazione};
+\node[](classmap) at (11,-2) {$Y(m,n)$};
+
+\path[arrow] (training)--(addestramento);
+\path[arrow] (addestramento) -- (decision_rule);
+\path[arrow] (node1)--(prediction);
+\path[arrow] (image)--(prediction);
+\path[arrow] (prediction)--(classmap);
+\end{tikzpicture}
+    \caption{Schema funzionale di un classificatore}
+    \label{fig:flowchart_classificatore}
+  \end{figure}
 \clearpage
 
 

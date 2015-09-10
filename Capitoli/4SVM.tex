@@ -151,7 +151,7 @@ con l'uguaglianza valida per gli elementi sul bordo (i punti rossi in Figura \re
 \end{tikzpicture}
 	
 \end{center}
-	\caption{Margine tra i campioni di training di due classi linearmente separabili}
+	\caption{Margine tra i campioni di \emph{training} di due classi linearmente separabili}
 	\label{fig:margine}
 \end{figure}
 
@@ -194,7 +194,7 @@ Procedendo con il calcolo del gradiente di $L$ si ottengono i seguenti risultati
 \label{eq:deriv_lagrang_rispetto_b}
 \dfrac{\partial L}{\partial b}=-\sum_i\alpha_iy_i=0 \quad\Rightarrow\quad \sum_i\alpha_iy_i=0
 \end{equation}
-L'equazione (\ref{eq:deriv_lagrang_rispetto_w}) suggerisce che il vettore $\mathbf{w}$ non sia altro che una combinazione lineare di alcuni vettori di training (per alcuni di loro $\alpha_i$ sarà pari a $0$), mentre l'equazione (\ref{eq:deriv_lagrang_rispetto_b}) sarà utile più avanti.
+L'equazione (\ref{eq:deriv_lagrang_rispetto_w}) suggerisce che il vettore $\mathbf{w}$ non sia altro che una combinazione lineare di alcuni vettori di \emph{training} (per alcuni di loro $\alpha_i$ sarà pari a $0$), mentre l'equazione (\ref{eq:deriv_lagrang_rispetto_b}) sarà utile più avanti.
 
 A questo punto si introduce il cosiddetto \textit{Problema lagrangiano duale}: invece di \emph{minimizzare} rispetto a $\mathbf{w}$ e $b$, si può \emph{massimizzare} rispetto ad $\alpha$ con vincoli le relazioni ottenute precedentemente per $\mathbf{w}$ e $b$ (equazioni (\ref{eq:deriv_lagrang_rispetto_w}) e (\ref{eq:deriv_lagrang_rispetto_b}))\footnote{Il teorema di Kunh-Tucker assicura che la soluzione di questo problema è la stessa del problema originario.}.
 
@@ -232,7 +232,7 @@ Per completare il discorso sulla SVM lineare, si consideri nuovamente la \emph{r
 Il motivo dell'uso di questo espediente matematico risiede nel fatto che adesso sia l'ottimizzazione della lagrangiana (\ref{eq:langrangiana_finale2}) sia la \emph{regola di decisione} (\ref{eq:regola_di_decisioneSVM_lineare}) dipendono esclusivamente da un prodotto scalare tra due vettori, $\mathbf{x}_i\cdot\mathbf{x}_j$ e $\mathbf{x}_i\cdot\mathbf{u}$ rispettivamente, e questo semplificherà notevolmente la trattazione della SVM non lineare. 
 
 \subsection{Soft Margin SVM}
-Prima di introdurre l'estensione della SVM che permetta la classificazione non-lineare, è interessante discutere di come sia possibile usare una SVM lineare anche per situazioni in cui il training set non sia linearmente separabile.\\
+Prima di introdurre l'estensione della SVM che permetta la classificazione non-lineare, è interessante discutere di come sia possibile usare una SVM lineare anche per situazioni in cui il \emph{training set} non sia linearmente separabile.\\
 Si prenda, come esempio, la situazione proposta di seguito (Figura \ref{fig:Dataset_nonseparabile}).
  \begin{figure}[!ht]
  \center

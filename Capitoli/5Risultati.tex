@@ -1,14 +1,7 @@
 %!TEX root = ../main.tex
+
 \chapter{Valutazione delle prestazioni del classificatore}
-
-\label{cap:prestazioni} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
-
-%\lhead{Capitolo \ref{prestazioni_capitolo}. \emph{Valutazione delle prestazioni del classificatore}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
-
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
-
+\label{cap:prestazioni}
 
 Dato un classificatore supervisionato, addestrato su un \emph{training set}, è fondamentale saper valutare l'accuratezza che può essere ottenuta quando tale classificatore è applicato a valori incogniti.\\
 A tale scopo, è essenziale valutare la probabilità di errore $P_e$ del classificatore per decidere, ad esempio, se le \emph{feature} utilizzate siano sufficienti a discriminare bene le classi o se sia necessario estrarne altre (come parametri di tessitura nel caso in cui i canali spettrali non siano abbastanza discriminanti).
@@ -29,6 +22,15 @@ E' altrettanto importante effettuare un'analisi qualitativa dell'intera mappa, m
 La $P_e$ fornisce una valutazione complessiva delle prestazioni del classificatore, senza però differenziare gli errori commessi in corrispondenza di classi diverse. Per una valutazione più dettagliata la matrice di confusione (\emph{confusion matrix}) è la tipologia di osservazione statistica maggiormente utilizzata: il risultato della classificazione sulle aree campione viene confrontato con la verità al suolo [Congalton]. Questa è una matrice $C \times C$, il cui elemento $e_{ij}$ è il numero di pixel di test della classe $\omega_i$ che il classificatore ha assegnato alla classe $\omega_j$. Sulla diagonale $i=j$ della matrice di confusione si leggono dunque i numeri di pixel di test classificati in modo corretto. Questo tipo di analisi statistica consente non solo di quantificare il successo ottenuto dalla procedura, ma anche di focalizzare i punti critici del processo di classificazione, ovvero le classi meno distinguibili tra loro. \\
 L'accuratezza della classificazione può essere valutata con diversi parametri numerici, tra cui i più utilizzati sono:
 \begin{itemize}
+\item La \emph{Producer Accuracy} (PA) di una classe $\omega_i$, la
+parte di pixel ben classificati rispetto alla al numero totale di
+pixel di test di $\omega_i$, in particolare essa si può esprimere
+come:
+\begin{equation}
+\label{eq:PA}
+PA_i=\dfrac{e_ii}{\sum_{j=1}^Ce_ij}
+\end{equation}
+Analogamente, si può definire \emph{Omission Error} (OE) di $\omega_i$, come la frazione complementare di pixel di pixel classificati (erroneamente).
 \item L' \emph{average accuracy} (AA) delle C classi è la media rispetto al numero di classi delle frazioni di pixel correttamente classificati (classe per classe), ed è data da:
 \begin{equation}
 \label{eq:AA}
@@ -82,12 +84,26 @@ L'insieme delle classi $\Omega=\left\lbrace\omega_1,\omega_2,\ldots,\omega_{10}\
 \item Bacini idrografici
 \end{enumerate}
 Nella Figura \ref{fig: Amiens65m} vengono presentate le immagini caratterizzanti il primo \emph{dataset}. 
-
+\begin{lstlisting}[float=b,title={Distribuzione dei pixel di training e test classe per classe.},
+                   label=lst:esempio, frame=lines]
+TR:				TE:
+Class 1 : 72483 		Class 1 : 70299
+Class 2 : 149917 		Class 2 : 68435
+Class 3 : 17945 		Class 3 : 10019
+Class 4 : 25121 		Class 4 : 16012
+Class 5 : 233481 		Class 5 : 115570
+Class 6 : 113030 		Class 6 : 48615
+Class 7 : 62854 		Class 7 : 54582
+Class 8 : 90718 		Class 8 : 50701
+Class 9 : 7903 			Class 9 : 3012
+Class 10: 34833 		Class 10: 27924
+Total   : 808285		Total   : 465169
+\end{lstlisting}
 \clearpage
 \begin{figure}[!ht]
    \center
    \subfigure[Immagine telerilevata]{
-      \includegraphics[width=0.8\textwidth]{Amiens_2006_SPOT_5m}}\\%pdf0.45
+      \includegraphics[width=0.7\textwidth]{Amiens_2006_SPOT_5m}}\\%pdf0.45
          \subfigure[Mappa di \emph{training}]{
       \includegraphics[width=0.4\textwidth]{GT_Amiens2006_5m_10classes_TR}}
      \hspace{4mm}
@@ -116,6 +132,7 @@ Nella Figura \ref{fig: Amiens62_5m} vengono presentate le immagini caratterizzan
 \center  
 \subfigure{
       \includegraphics[width=0.3\textwidth]{AssiRG_3classi}}
+      \hspace{3mm}
 \subfigure{ 
 		 \includegraphics[width=0.3\textwidth]{AssiGB_3classi}}
 		
@@ -129,7 +146,7 @@ Nella Figura \ref{fig: Amiens62_5m} vengono presentate le immagini caratterizzan
 \begin{figure}[!ht]
    \center
    \subfigure[Immagine telerilevata]{
-      \includegraphics[width=0.8\textwidth]{Amiens_2006_SPOT_2_5m}}\\%pdf0.45
+      \includegraphics[width=0.7\textwidth]{Amiens_2006_SPOT_2_5m}}\\%pdf0.45
          \subfigure[Mappa di \emph{training}]{
       \includegraphics[width=0.4\textwidth]{GT_Amiens2006_2_5m_7classes_TR}}
      \hspace{4mm}
@@ -154,11 +171,24 @@ L'insieme delle classi $\Omega=\left\lbrace\omega_1,\omega_2,\ldots,\omega_{7}\r
 \item Acqua
 \end{enumerate}
 Nella Figura \ref{fig: Amiens122_5m} vengono presentate le immagini caratterizzanti il primo \emph{dataset}; si osservi con attenzione la composizione dell'immagine di \emph{training}.
+\begin{lstlisting}[float=b,title={Distribuzione dei pixel di training e test classe per classe.},
+                   label=lst:esempio, frame=lines]
+TR:					TE:
+Class 1: 132005				Class 1: 60793
+Class 2: 76330				Class 2: 40123
+Class 3: 351949				Class 3: 282545
+Class 4: 933512				Class 4: 461562
+Class 5: 451999				Class 5: 194213
+Class 6: 363058				Class 6: 203286
+Class 7: 170921				Class 7: 123744
+Total  : 2479774			Total  : 1366266
+\end{lstlisting}
 \clearpage
+
 \begin{figure}[!ht]
    \center
    \subfigure[Immagine telerilevata]{
-      \includegraphics[width=0.8\textwidth]{Amiens_2012_SPOT_2_5m}}\\%pdf0.45
+      \includegraphics[width=0.7\textwidth]{Amiens_2012_SPOT_2_5m}}\\%pdf0.45
          \subfigure[Mappa di \emph{training}]{
       \includegraphics[width=0.4\textwidth]{GT_Amiens2012_2_5m_7classes_TR}}
      \hspace{4mm}
@@ -180,8 +210,8 @@ La fase di \emph{training} della SVM, la quale ha complessità temporale $O(n^\a
 \section{Descrizione parametri per estrazione di \emph{feature} di tessitura}
 Qui di seguito verranno presentate le variazioni di precisione del nostro algoritmo al variare delle diverse combinazioni dei parametri in gioco, evidenziando le motivazioni alla base delle nostre scelte progettuali.
 
-\subsection{Pulitura del rumore(da rifinire)}
-La pulitura del rumore è stata effettuata, come già illustrato in figura[], tramite un filtraggio passa-basso attraverso una gaussiana bi-dimensionale avente varianza $\sigma$ pari a 2 pixel e media nulla. Si può chiaramente vedere dalla tabella, come, applicando questa gaussiana sia sull'immagine in ingresso all'algoritmo HOG sia sulle immagini HOG risultanti, si abbia un incremento della \emph{overall accuracy} pari a ....
+\subsection{Pulitura del rumore}
+La pulitura del rumore è stata effettuata, come già illustrato in figura \ref{fig:immagine_rumore} nel Capitolo \ref{cap:hog}, tramite un filtraggio passa-basso attraverso una gaussiana bi-dimensionale avente varianza $\sigma$ pari a 2 pixel e media nulla. Applicando questa gaussiana sia sull'immagine in ingresso all'algoritmo HOG sia sulle immagini HOG risultanti, si abbia un incremento nella \emph{overall accuracy}.
 
 \subsection{Calcolo dei gradienti}
 Per quanto riguarda la scelta della maschera da utilizzare per il calcolo del gradiente, sono state valutate diverse opzioni, tra cui la semplice maschera in $1D$ a differenze separate $[-1, 0 ,1]$, la maschera cubica $[1,-8,0,8,-1]$ e filtri  $2D$ più classici come le matrici di Prewitt e Sobel.\\
@@ -192,14 +222,13 @@ La fase del gradiente è stata considerata tra $0$ e $180$ (ignorandone quindi i
 \subsection{Numero di canali dei vettori delle \emph{feature}}
 Per quanto riguarda il numero di canali utilizzati per l'istogramma, la scelta che ha fornito prestazioni migliori è risultata essere quella con numero di bande pari a 4. Un aumento del numero di \emph{bins} comporta un aumento della risoluzione angolare e, pur apportando complessivamente poca informazione aggiuntiva,  aumenta la dimesionalità dello spazio delle \emph{feature} $\mathbb{R}^d$. Infatti, in primo luogo, all'aumentare di $d$, cresce la complessità computazionale del classificatore, che si traduce in un allungamento dei tempi di calcolo e in una maggiore occupazione di memoria.
 
-\subsection{Dimensione delle celle}
+\subsection{Dimensione delle celle e dei blocchi}
 La scelta di utilizzare celle di elevate dimensioni introduce un'alta correlazione tra i vettori delle \emph{feature}, mentre un' eccessiva riduzione comporta l'inserimento di vettori così scorrelati da avere valori praticamente associabili a rumore. La giusta via di mezzo è stata trovata empiricamente attraverso diverse sperimentazioni ed è risultata essere diversa (come ci si può aspettare) a seconda della risoluzione spaziale con cui si operava:
 \begin{itemize}
 \item cella da $4\times 4$ pixel per immagini a risoluzione $2000 \times 2200$ (\ref{fig: Amiens65m})
 \item cella da $2 \times 2$ pixel per immagini a risoluzione $4001 \times 4400$ (\ref{fig: Amiens62_5m} e\ref{fig: Amiens122_5m} )
 \end{itemize}
 
-\subsection{Dimensione dei blocchi}
 Si è deciso di mantenere costante il numero di pixel usati per la normalizzazione dei blocchi ad un valore di $16\times16$, dal momento che questo valore non inficia la quantità di informazione a disposizione.
 
 \clearpage
@@ -279,10 +308,10 @@ Si può chiaramente osservare che l'introduzione delle \emph{feature} HOG ha qua
 
 \'E importante far notare fin da subito che l'immagine telerilevata che fa parte di questo \emph{dataset} è stata acquisita in situazioni ambientali e in periodi di tempo diversi da quelle precedenti (nell'inverno 2012). Questo costituisce un evidente deficit nell'informazione proveniente dal suolo, in quanto la presenza di neve uniformemente distribuita nell'area di interesse ha reso altamente più complesso la discriminazione delle 7 diverse coperture di suolo.\\
 
-Già con un'analisi della mappa, si osserva che qualitativamente il risultato sembra peggiorare rispetto ai due esperimenti precedenti. Due sono i punti critici già a prima vista apprezzabili:
+Già con un'analisi della mappa, si osserva che qualitativamente il risultato sembra peggiorare rispetto all'esperimenti precedente. Due sono i punti critici già a prima vista apprezzabili:
 \begin{itemize}
 \item i pixel etichettati come appartenenti al suolo nudo (classe 4) sono in misura sovrabbondante rispetto ai risultati precedenti: ciò può essere giustificato dall'uniformità del suolo introdotta dal manto nevoso;
-\item la quasi totale scomparsa delle strade (classe 2) nel centro, che quasi ovunque vengono classificate come pixel appartenenti alla classe acqua (classe 7) GIUSTIFICAZIONE
+\item la quasi totale scomparsa delle strade (classe 2) nel centro, che quasi ovunque vengono classificate come pixel appartenenti alla classe acqua (classe 7).
 \end{itemize}
 
 Queste considerazioni trovano conferma  negli indici di accuratezza  che raggiungono valori meno soddisfacenti rispetto ai casi esaminati in precedenza.
@@ -332,7 +361,7 @@ Quest'immagine è il risultato della fusione di tre mappe tematiche (strade prin
 \
 
  In questo modo, si è riusciti a limitare la degradazione della classe strade (classe 2) portandola ad un più che accettabile valore di accuratezza ($64.61\%$); dal momento che il numero di pixel classificati come strade non è molto significativo nella totalità dei pixel dell'immagine, non si ha un'apprezzabile incremento dell'OA, al contrario della AA che, pesando gli errori uniformemente, registra un significativo miglioramento ($63.54\%$).
-In Figura ref[] viene mostrato l'effetto di questa \emph{feature} aggiuntiva per la classificazione delle strade.
+In Figura \ref{fig:confrontoAmiens2012_2_5m} viene mostrato l'effetto di questa \emph{feature} aggiuntiva per la classificazione delle strade.
 % (la porzione di immagine utilizzata è la stessa della Figura \ref{fig:confrontoAmiens2012_2_5m}, per una più immediata comprensione).
  \begin{figure}[!ht]
 \center 

@@ -1,0 +1,25 @@
+TR:
+Class 1: 72483
+Class 2: 149917
+Class 3: 17945
+Class 4: 25121
+Class 5: 233481
+Class 6: 113030
+Class 7: 62854
+Class 8: 90718
+Class 9: 7903
+Class 10: 34833
+The number of trainig pixels is 808285
+
+TE:
+Class 1: 70299
+Class 2: 68435
+Class 3: 10019
+Class 4: 16012
+Class 5: 115570
+Class 6: 48615
+Class 7: 54582
+Class 8: 50701
+Class 9: 3012
+Class 10: 27924
+The number of test pixels is 465169

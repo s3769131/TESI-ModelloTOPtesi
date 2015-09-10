@@ -166,7 +166,7 @@ Le \emph{feature} di tessitura vengono estratte al fine di analizzare le differe
 Dato un insieme $\Omega =\lbrace\omega_1,\ldots, \omega_c\rbrace$ costituito da $C$ classi distinte, note a priori, si assume che ogni oggetto o entità da analizzare sia appartenente ad una ed una sola classe (nel nostro caso ad una data copertura del suolo). A ciascun pixel è associata, quindi, anche un'etichetta di classe $y(m,n) \in \Omega$ e l'immagine $y(m,n)$ (con $m,n\in \mathbb{Z}$) è detta mappa di classificazione.
 \\
 
-Il \emph{training set} è l'insieme dei pixel di cui è nota a priori l'etichetta di classe. L'insieme di tali etichette rappresenta un'ulteriore immagine, detta  \emph{mappa di training}, che evidenzia alcuni pixel dell'immagine assegnati a ciascuna classe, distinguendoli dai "pixel di sfondo", cioè quei pixel per i quali l'etichetta di classe è incognita.
+Il \emph{training set} è l'insieme dei pixel di cui è nota a priori l'etichetta di classe ed è definito dall'insieme delle coppie $\left\lbrace \mathbf{x}_i,y_i \right\rbrace $, $i=1,\ldots,N$ con $N$ il numero di vettori di \emph{training} scelti. L'insieme di tali etichette rappresenta un'ulteriore immagine, detta  \emph{mappa di training}, che evidenzia alcuni pixel dell'immagine assegnati a ciascuna classe, distinguendoli dai "pixel di sfondo", cioè quei pixel per i quali l'etichetta di classe è incognita.
 \clearpage
 
 

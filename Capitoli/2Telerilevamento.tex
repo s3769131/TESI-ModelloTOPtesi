@@ -219,7 +219,7 @@ A tal fin, un ruolo chiave viene giocato principalmente da tre approcci metodolo
 \subsection*{Estrazione dei parametri di tessitura}
 L'estrazione di \emph{texture} ha come obiettivo quello di rilevare, in una determinata regione dell'immagine, strutture ripetitive nella distribuzione spaziale dei pixel quali zone urbane o boschive. 
 Ciò fornisce una sorgente di dati complementare per le applicazioni in cui l'informazione relativa unicamente allo spettro dell'immagine risulta non sufficiente ai fini della classificazione. 
-Le principali tecniche di estrazione di parametri di tessitura si basano sui semivariogrammi, che consistono in una statistica del secondo ordine delle intensità dei pixel, sulla morfologia matematica, sull'uso della matrice di co-occorrenza dei livelli di grigio, o su statistiche associate a confronti i istogrammi locali. Il calcolo di tali feature coinvolge tipicamente l'uso di algoritmi basati su finestre mobili.
+Le principali tecniche di estrazione di parametri di tessitura si basano sui semivariogrammi, che consistono in una statistica del secondo ordine delle intensità dei pixel, sulla morfologia matematica, sull'uso della matrice di co-occorrenza dei livelli di grigio, o su statistiche associate a confronti i istogrammi locali. Il calcolo di tali \emph{feature} coinvolge tipicamente l'uso di algoritmi basati su finestre mobili.
 
 
 \subsection*{Tecniche Region-based}
@@ -228,6 +228,9 @@ Gli approcci basati invece sulle regioni (\emph{region-based methods}) si basano
 \item pixel nella stessa categoria aventi livelli di grigio simili che formano una regione connessa;
 \item pixel adiacenti che sono in categorie differenti hanno valori differenti. 
 \end{itemize}
+In generale, una tecnica di segmentazione punta a suddividere l'immagine in un insieme di regioni (anche dette segmenti) che spesso corrispondono a oggetti o porzioni di oggetti a se stanti. 
+Una famiglia di tecniche tra le più utilizzate in tale ambito è quella degli algoritmi di crescita delle regioni (\emph{region-growing}), i quali, progressivamente, espandono un insieme di segmenti a partire da un determinato insieme di punti detti semi (\emph{seed points}).
+In particolare, questo approccio alla segmentazione esamina i pixel adiacenti di un seme e determina se i pixel adiacenti devono essere aggiunti alla regione. Il processo è così iterato fino alla generazione della intera regione. 
 
 
 \subsection*{Markov Random Field}

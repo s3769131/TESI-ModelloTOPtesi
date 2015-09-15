@@ -4,7 +4,7 @@
 
 \label{cap:svm} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-Una SVM (\emph{Support Vector Machine}) è un modello di apprendimento supervisionato associato ad algoritmi largamente utilizzati per il \emph{data analysis} e il \emph{pattern recognition} (tra cui anche il problema della classificazione).
+Una SVM (\emph{Support Vector Machine}) è un modello di apprendimento supervisionato associato ad algoritmi largamente utilizzati per l'analisi statistica di dati e il \emph{pattern recognition} (tra cui anche il problema della classificazione).
 L'SVM è un modello abbastanza recente; anche se la sua formulazione risale agli anni '60, solo negli ultimi 15/20 anni si è registrato un incremento significativo nell'uso di algoritmi SVM per classificazione.
 La sua fortuna risiede nel fatto che può essere facilmente esteso in molti campi, senza stravolgere la semplicità che caratterizza questi classificatori.
 \\
@@ -64,7 +64,7 @@ Si prenda, per esempio, la situazione proposta in Figura \ref{fig:insieme_lin_se
 	\end{tikzpicture}
 	
 \end{center}
-	\caption{Dataset linearmente separabile}
+	\caption{\emph{Training set} binario linearmente separabile}
 	\label{fig:insieme_lin_separ}
 \end{figure}
 \\
@@ -166,7 +166,7 @@ L'obiettivo ora è quindi massimizzare questo valore, che equivale a minimizzare
 \begin{eqnarray}\nonumber
 \label{eq:problema_di_minimizzazione}
 &\text{min}\dfrac{1}{2}\vert\vert\mathbf{w}\vert\vert^2\\
-&\text{ vincolato a }y_i\left (\mathbf{w}\cdot\mathbf{x}_i+b\right )-1=0 \quad \forall i=1,\ldots,N
+&\text{ vincolato a }y_i\left (\mathbf{w}\cdot\mathbf{x}_i+b\right )-1\geq0 \quad \forall i=1,\ldots,N
 \end{eqnarray}
 %\begin{equation}
 %\label{eq:problema_di_minimizzazione}
@@ -268,7 +268,7 @@ Si prenda, come esempio, la situazione proposta di seguito (Figura \ref{fig:Data
   \draw[black]     (3.5,.2)  circle (3pt); 
   \draw[black]     (4,.3)    circle (3pt); 
 \end{tikzpicture}
-    \caption{Dataset non linearmente separabile}
+    \caption{\emph{Training set} binario non linearmente separabile}
     \label{fig:Dataset_nonseparabile}
   \end{figure}
 \\
@@ -327,7 +327,7 @@ La situazione che si è andata a definire, graficamente, appare in Figura \ref{f
   \draw[black]     (3.5,.2)  circle (3pt); 
   \draw[black]     (4,.3)    circle (3pt); 
 \end{tikzpicture}
-    \caption{Esempio di soft margin}
+    \caption{Esempio di soft margin nel caso di un \emph{training set} binario non linearmente separabile}
     \label{fig:soft_margin}
   \end{figure}
 
@@ -420,7 +420,7 @@ dove $\beta_i$ sono i moltiplicatori di Lagrange necessari per vincolare la posi
   \draw[black]     (4,.3)    circle (3pt); 
 \end{tikzpicture}   
    }
- \caption{Confronto di strategia tra Hard Margin SVM e Soft Margin SVM}
+ \caption{Confronto tra Hard Margin SVM e Soft Margin SVM nel caso di un training set binario linearmente separabile}
  \end{figure}
  
 \section{SVM non lineare per classificazione binaria}
@@ -467,7 +467,7 @@ Graficamente, accade una situazione del genere (Figura \ref{fig:funzione_di_tras
 \draw[dashed] (10,2) --+(0,-2);
 \draw[dashed] (9,4)  --+(0,-2);
   \end{tikzpicture}
-    \caption{Situazione esemplificativa della funzione di trasformazione}
+    \caption{Trasformazione dello spazio delle \emph{feature} in uno spazio munito di prodotto scalare ed avente dimensione maggiore. Cerchi pieni e vuoti indicano campioni di training di due classi}
     \label{fig:funzione_di_trasformazione}
   \end{figure}
 \\
@@ -520,9 +520,9 @@ Alcuni dei \emph{kernel} più famosi e usati sono i seguenti:
 \begin{itemize}
 \item \textbf{Lineare}: $K(\mathbf{x},\mathbf{y})=\mathbf{x}\cdot\mathbf{y}$
 \item \textbf{Polinomiale}: $K(\mathbf{x},\mathbf{y})=\left (1+\mathbf{x}\cdot\mathbf{y}\right )^d$ con $d>0$
-\item \textbf{Radiale Gaussiano} (RBF):  $K(\mathbf{x},\mathbf{y})=\exp\left (-\dfrac{\vert\vert\mathbf{x}-\mathbf{y}\vert\vert^2}{2\sigma^2}\right )$ il quale introduce una dimensionalità dello spazio delle \emph{feature} trasformate infinita.
+\item \textbf{Radiale Gaussiano} (RBF):  $K(\mathbf{x},\mathbf{y})=\exp\left (-\dfrac{\vert\vert\mathbf{x}-\mathbf{y}\vert\vert^2}{2\sigma^2}\right )$ il quale introduce una dimensione dello spazio delle \emph{feature} trasformate infinita.
 \end{itemize}
-\section{SVM multiclasse}
+\section{Estensioni multiclasse}
 Un problema con più classi si affronta mediante SVM esprimendolo come combinazione di problemi binari. Assumendo di operare con $C$ classi, tale operazione si effettua tipicamente in due modi possibili:
 \begin{itemize}
 \item l'approccio \emph{one-against-one} (OAO) calcola mediante SVM binaria una \emph{regola di decisione} $f_{ij}$ per ogni coppia di classi, per un totale di $C(C-1)/2$ funzioni discriminanti, e classifica un campione incognito $\mathbf{u}\in\mathbb{R}^d$ mediante "votazione" (se $f_{ij}>0$ si dà un voto alla classe $i$-esima, altrimenti alla $j$-esima; si assegna infine $\mathbf{u}$ alla classe che ha ricevuto più voti);

@@ -1,13 +1,13 @@
 %!TEX root = ../main.tex
 
-\chapter{Valutazione delle prestazioni del classificatore}
+\chapter{Valutazione delle prestazioni di un classificatore}
 \label{cap:prestazioni}
 
 Dato un classificatore supervisionato, addestrato su un \emph{training set}, è fondamentale saper valutare l'accuratezza che può essere ottenuta quando tale classificatore è applicato a campioni incogniti.\\
 A tale scopo, è essenziale valutare la probabilità di errore $P_e$ del classificatore per decidere, ad esempio, se le \emph{feature} utilizzate siano sufficienti a discriminare bene le classi o se sia necessario estrarne altre (come parametri di tessitura nel caso in cui i canali spettrali non siano abbastanza discriminanti).
 \clearpage
 
-\subsection{Stima della probabilità di errore}
+\section{Stima della probabilità di errore}
 In presenza di $C$ classi $\omega_1,\omega_2, \ldots, \omega_C$, detta $P_i$ la probabilità \emph{a priori}, la probabilità di errore $P_e$ si può esprimere nel modo seguente:
 \begin{equation}
 \label{eq:P_e}
@@ -19,7 +19,7 @@ Solitamente la $P_e$ viene valutata su un insieme di campioni pre-etichettati(\e
 Per poter individuare e possibilmente evitare il fenomeno dell'\emph{overfitting},\footnote{Si parla di \emph{overfitting} quando la funzione discriminante è strettamente dipendente dai campioni di \emph{training} specifici utilizzati per calcolarla ed è quindi particolarmente inefficace quando applicata a campioni incogniti} una condizione fondamentale per stimare $P_e$ come frequenza relativa degli errori sul \emph{test set} è che i campioni pre-etichettati siano indipendenti e identicamente distribuiti (i.i.d). Per questa ragione, è buona norma prelevare i campioni di \emph{training} e di \emph{test} in regioni dell'immagine spazialmente disgiunte tra loro.\\
 E' altrettanto importante effettuare un'analisi qualitativa dell'intera mappa, mediante foto-interpretazione, come complemento alla valutazione quantitativa delle prestazioni di classificazione sui campioni di test.
 
-\subsection{Matrice di confusione e parametri di accuratezza}
+\section{Matrice di confusione e parametri di accuratezza}
 La $P_e$ fornisce una valutazione complessiva delle prestazioni del classificatore, senza però differenziare gli errori commessi in corrispondenza di classi diverse. Per una valutazione più dettagliata la matrice di confusione (\emph{confusion matrix}) è la tipologia di osservazione statistica maggiormente utilizzata: il risultato della classificazione sulle aree campione viene confrontato con la verità al suolo. Questa è una matrice $C \times C$, il cui elemento $e_{ij}$ è il numero di pixel di test della classe $\omega_i$ che il classificatore ha assegnato alla classe $\omega_j$. Sulla diagonale $i=j$ della matrice di confusione si leggono dunque i numeri di pixel di test classificati in modo corretto. Questo tipo di analisi statistica consente non solo di quantificare il successo ottenuto dalla procedura, ma anche di focalizzare i punti critici del processo di classificazione, ovvero le classi meno distinguibili tra loro. \\
 L'accuratezza della classificazione può essere valutata con diversi parametri numerici, tra cui i più utilizzati sono i seguenti:
 \begin{itemize}

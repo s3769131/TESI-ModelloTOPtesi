@@ -2,8 +2,19 @@
 % !TEX root = ../main.te
 
 \english
-\sommario
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+%\sommario
+\interlinea{1.3}
+The last decades have seen a significant increase in the development of automatic classification techniques regarding digital remote sensing images allowing this field to become an appealing technique for the environmental supervision and management (such as Earth Observation). In particular, this thesis aims at very high resolution (VHR)  images classification, obtained by multispectral optical sensors, for the observation of urban areas.\\
+The thesis explores the application of a modern feature extraction technique, called "histogram of oriented gradients" (HOG), applied to multispectral VHR images. The algorithm, widely used in the human detection area, but totally new in this context, has been thoroughly analyzed in each phase, highlighting the correspondance between different parameter sets and different accuracy variations. \\
+ Three relevant cases will be studied, regarding Amiens (France) urban areas obtained through the SPOT5 sensor.
+This is an interesting and challenging classification issue, since the regions are well diversified, including spatially homogeneous regions (e.g. "water"), highly defined geometrical structures (e.g. "urban areas") and several ground portions with different textures (e.g. "vegetated areas").\\
+The experimental results have confirmed the opportunity of additional feature extraction, associated with spatial information of the pixels magnitude, in particulare in the presence of classes highly overlapping in terms of spectrum. In the studied cases, regarding the urban areas, the classification, through the HOG implementation, has some limitations concerning classes identified by homogeneous areas. However, there were sharp increases regarding the highly geometrical classes.
+This helps us to understand the true potentiality of HOGs as feature extraction techniques for urban areas mapping and suggests to use them together with other feature analysis techniques.
 
+
+%% PARTE VECCHIA
 %The classification of remote sensed images is an analysis and identification method which allows to pair each pixel of a specific image with a label which corresponds to a specific class, letting a calculator to autonomously discriminate several regions which form the image itself.
 %Even though there is a significant number of possible applications, this thesis will be focused on remote sensing techniques regarding VHRI, aimed to the Earth observation. 
 %This thesis explores the application of a modern feature extraction technique, known as histograms of oriented gradients (HOG), applied to VHR multispectral images. 
@@ -13,11 +24,11 @@
 %Mettere la parte in mezzo????
 %
 %The experimental results have illustrated that the classification through the HOG implementation has several limits ragarding homogeneous regions. However, there were sharp increases in the zones charachterized by geometrical structures. 
-\interlinea{1.3}
-The classification of remote sensing images is a method of analysis and identification which allows to pair each pixel of a specific image with a label which corresponds to a specific class, letting a calculator to autonomously discriminate several regions which form the image itself.
-Although there is a significant number of possible applications, this thesis will be focused on remote sensing techniques regarding VHRI, aimed to the Earth observation. \\
-This thesis will explore the application of a modern feature extraction method, known as histograms of oriented gradients (HOG), applied to VHR multispectral images. \\
-The algorithm, which has already been studied for what is concerned human detection, but is totally new for this field, will be deeply analyzed in each phase, highlighting how a difference parameter set corresponds to different performance changes. 
-Even though some parameters combinations showed several differences when applied to different datasets, the overall result has been highly rewarding, especially referring in the almost total lack of previous work in this field.\\
-Three relevant cases will be studied, regarding SPOT5 images acquired over Amiens (France). The imaged scenes represent a challenging classification problem, involving spacially homogenous classes (e.g. "water") as well as classes with an apparent geometrical structure (e.g. "built-up land") and textured land covers (e.g. the vegetated classes).\\
-The experimental results will be discussed and turns out that the classification through the HOG implementation has several limits ragarding homogeneous regions. However, there were sharp increases in the zones charachterized by geometrical structures.
+%\interlinea{1.3}
+%The classification of remote sensing images is a method of analysis and identification which allows to pair each pixel of a specific image with a label which corresponds to a specific class, letting a calculator to autonomously discriminate several regions which form the image itself.
+%Although there is a significant number of possible applications, this thesis will be focused on remote sensing techniques regarding VHRI, aimed to the Earth observation. \\
+%This thesis will explore the application of a modern feature extraction method, known as histograms of oriented gradients (HOG), applied to VHR multispectral images. \\
+%The algorithm, which has already been studied for what is concerned human detection, but is totally new for this field, will be deeply analyzed in each phase, highlighting how a difference parameter set corresponds to different performance changes. 
+%Even though some parameters combinations showed several differences when applied to different datasets, the overall result has been highly rewarding, especially referring in the almost total lack of previous work in this field.\\
+%Three relevant cases will be studied, regarding SPOT5 images acquired over Amiens (France). The imaged scenes represent a challenging classification problem, involving spacially homogenous classes (e.g. "water") as well as classes with an apparent geometrical structure (e.g. "built-up land") and textured land covers (e.g. the vegetated classes).\\
+%The experimental results will be discussed and turns out that the classification through the HOG implementation has several limits ragarding homogeneous regions. However, there were sharp increases in the zones charachterized by geometrical structures.

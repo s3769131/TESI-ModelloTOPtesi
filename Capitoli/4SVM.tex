@@ -5,8 +5,8 @@
 \label{cap:svm} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
 Una SVM (\emph{Support Vector Machine}) è un modello di apprendimento supervisionato associato ad algoritmi largamente utilizzati per l'analisi statistica di dati e il \emph{pattern recognition} (tra cui anche il problema della classificazione).
-L'SVM è un modello abbastanza recente; anche se la sua formulazione risale agli anni '60, solo negli ultimi 15/20 anni si è registrato un incremento significativo nell'uso di algoritmi SVM per classificazione.
-La sua fortuna risiede nel fatto che può essere facilmente esteso in molti campi, senza stravolgere la semplicità che caratterizza questi classificatori.
+L'SVM è un modello abbastanza recente; anche se la sua formulazione risale agli anni '60, solo negli ultimi 15/20 anni si è registrato un incremento significativo nell'uso di algoritmi SVM per classificazione \citep{Book_svm}.
+La sua fortuna risiede nel fatto che possa essere facilmente applicato a molti campi ed alle sue proprietà ?? in termini di capacità di generalizzazione e robustezza all'aumento del numero di \emph{feature}.%senza stravolgere la semplicità che caratterizza questi classificatori.
 \\
 Questo capitolo servirà per introdurre la teoria matematica su cui si basa un classificatore SVM e sarà impostato nel seguente modo: si inizierà descrivendo dettagliatamente il modello più semplice di SVM (SVM lineare per classificazione binaria), poi si proseguirà con la descrizione di come è possibile estendere questo modello per una classificazione non-lineare e, infine, verranno introdotte le possibili modifiche che permettono la classificazione multiclasse.
 \clearpage
@@ -18,7 +18,7 @@ Dato un \emph{training set} linearmente separabile $(\mathbf{x}_i,y_i)$, $i=1,\l
 f(\mathbf{x}_i):\twopartdef{>0}{y_i=+1}{< 0}{y_i=-1}
 \end{equation}
 ovvero $y_if(\mathbf{x}_i)>0$ per una corretta classificazione.
-La funzione $f$ è detta \textit{regola di decisione} ed è costruita in modo tale che, preso un qualsiasi \textit{campione incognito} $\mathbf{u}$ da classificare, il valore di $f$ valutato in $\mathbf{u}$ restituisce una stima dell'etichetta $y_u$ da associare. In equazioni:
+La funzione $f$ è detta \textit{regola di decisione} ed è costruita in modo tale che, preso un qualsiasi \textit{campione incognito} $\mathbf{u}$ da classificare, il valore di $f$ valutato in $\mathbf{u}$ restituisca una stima dell'etichetta $y_u$ da associare. In equazioni:
 \begin{equation}
 \label{eq:regola_di_decisione}
 f\text{ tale che }
@@ -32,7 +32,7 @@ f\text{ tale che }
 \subsection{Hard Margin SVM}
 Un insieme di elementi in $\mathbb{R}^d$ è linearmente separabile se esiste almeno un iperpiano (che in generale avrà dimensione $d-1$) in grado di separare, nello spazio vettoriale dei campioni in ingresso, quelli che richiedono un'etichetta positiva da quelli che richiedono un'etichetta negativa. 
 \\
-Si prenda, per esempio, la situazione proposta in Figura \ref{fig:insieme_lin_separ}: qui si può facilmente evincere che esiste almeno un iperpiano (in questo caso una retta) che divida lo spazio in due semispazi, ciascuno dei quali contiene campioni di una sola classe.
+Si prenda, per esempio, la situazione proposta in Figura \ref{fig:insieme_lin_separ}: qui si può facilmente evincere che esista almeno un iperpiano (in questo caso una retta) che divida lo spazio in due semispazi, ciascuno dei quali contiene campioni di una sola classe.
 \begin{figure}[!ht]
 \begin{center}
 
@@ -68,15 +68,15 @@ Si prenda, per esempio, la situazione proposta in Figura \ref{fig:insieme_lin_se
 	\label{fig:insieme_lin_separ}
 \end{figure}
 \\
-Il problema nasce dal fatto che possono esistere infiniti iperpiani e la scelta di quale usare per l'addestramento potrebbe avere ripercussioni notevoli per la fase di classificazione. 
+Il problema nasce dal fatto che possano esistere infiniti iperpiani e la scelta di quale usare per l'addestramento possa avere ripercussioni notevoli sulla fase di classificazione. 
 L'SVM risolve questo problema cercando l'iperpiano che massimizza il margine tra i due insiemi di elementi. 
 \\
-In termini più matematici, un iperpiano in $\mathbb{R}^d$ ha forma:
+In termini matematici, un iperpiano in $\mathbb{R}^d$ ha forma:
 \begin{equation}
 \label{eq:iperpiano}
 \mathbf{w}\cdot\mathbf{x}+b=0
 \end{equation}
-dove $\mathbf{w}\in\mathbb{R}^d$ è la normale all'iperpiano e $b/ \vert\vert\mathbf{w}\vert\vert$ è la distanza perpendicolare dall'iperpiano all'origine.
+dove $\mathbf{w}\in\mathbb{R}^d$ è la normale all'iperpiano e $b/ \vert\vert\mathbf{w}\vert\vert$ è la distanza dell'origine dall'iperpiano.
 \\
 Alla luce di ciò, si può riscrivere la \textit{regola di decisione} presentata nell'equazione (\ref{eq:regola_di_decisione}) nel seguente modo:
 \begin{equation}
@@ -89,8 +89,8 @@ Alla luce di ciò, si può riscrivere la \textit{regola di decisione} presentata
 	\right.
 \end{equation}
 
-Dato che $\mathbf{w}\cdot\mathbf{x}+b=0$ e $c\left (\mathbf{w}\cdot\mathbf{x}+b\right )=0$ definiscono la stessa regola di decisione (per $c>0$), si ha libertà di scegliere la normalizzazione di $\mathbf{w}$.
-In questo caso, si può scegliere il fattore di normalizzazione in modo tale che $\mathbf{w}\cdot\mathbf{x}_i+b\geq 1$ e $\mathbf{w}\cdot\mathbf{x}_i+b\leq-1$, per gli elementi della prima classe e della seconda rispettivamente.
+Dato che $\mathbf{w}\cdot\mathbf{x}+b=0$ e $c\left (\mathbf{w}\cdot\mathbf{x}+b\right )=0$ definiscono la stessa regola di decisione per $c>0$, si ha libertà di scegliere la normalizzazione di $\mathbf{w}$.
+In questo caso, si può scegliere il fattore di normalizzazione in modo tale che $\mathbf{w}\cdot\mathbf{x}_i+b\geq 1$ e $\mathbf{w}\cdot\mathbf{x}_i+b\leq-1$, per gli elementi di \emph{training} della prima classe e della seconda rispettivamente.
 Per convenienza matematica, dato che $y_i\in\left\lbrace -1,1\right\rbrace$, le due identità precedenti possono essere riscritte nel seguente modo:
 \begin{equation}
 \label{eq:disq_elementi1}
@@ -160,7 +160,7 @@ Geometricamente, sotto queste ipotesi, si dimostra che il margine risulta essere
 \label{eq:margine}
 \dfrac{\mathbf{w}}{\vert\vert\mathbf{w}\vert\vert}\cdot\left (\mathbf{x}_+-\mathbf{x}_-\right )=\dfrac{2}{\vert\vert\mathbf{w}\vert\vert}
 \end{equation}
-dove $\mathbf{x}_+$ e $\mathbf{x}_-$ sono i campioni delle due classi (rispettivamente) più vicini al iperpiano separatore (vedi Figura \ref{fig:margine} ed equazione (\ref{eq:disq_elementi2})).
+dove $\mathbf{x}_+$ e $\mathbf{x}_-$ sono i campioni delle due classi (rispettivamente) più vicini all'iperpiano separatore (vedi Figura \ref{fig:margine} ed equazione (\ref{eq:disq_elementi2})).
 \\
 L'obiettivo ora è quindi massimizzare questo valore, che equivale a minimizzare $\vert\vert\mathbf{w}\vert\vert$, il quale, a sua volta, per convenienza matematica, può essere espresso nel seguente termine:
 \begin{eqnarray}\nonumber
@@ -178,12 +178,12 @@ L'obiettivo ora è quindi massimizzare questo valore, che equivale a minimizzare
 %(Poiché questi problemi sono già stati ampiamente studiati sia dal punto di vista teorico che da quello applicativo degli algoritmi, possiamo beneficiare immediatamente dei risultati ottenuti nella teoria dell’ottimizzazione. In particolare, questo approccio produce algoritmi computazionalmente efficienti e adattabili a un ampio numero di casi in cui non i dati non sono classificabili senza errore.
 %Because it is quadratic, the surface is a paraboloid, with just a single global minimum 
 %\\
-Essendo questo un chiaro esempio di calcolo di estremi vincolati, per semplificare i calcoli, si possono usare i \textit{Moltiplicatori di Lagrange}, che permettono di lavorare su un problema duale, ovvero l'ottimizzazione (minimizzazione rispetto a $\mathbf{w}$ e a $b$) della seguente funzione:
+Essendo questo un problema di calcolo di estremi vincolati si possono usare i \textit{moltiplicatori di Lagrange}, che permettono di lavorare su un problema duale, ovvero l'ottimizzazione (minimizzazione rispetto a $\mathbf{w}$ e a $b$) della seguente funzione:
 \begin{equation}
 \label{eq:lagrangiana}
 \text{min}_{\mathbf{w},b}\text{ }L=\dfrac{1}{2}\vert\vert\mathbf{w}\vert\vert^2-\sum_i\alpha_i\left [y_i\left (\mathbf{w}\cdot\mathbf{x}_i+b\right )-1\right ]
 \end{equation}
-dove si sottintende, da questo punto, che la sommatoria sia per ogni $i=1,\ldots,N$.
+dove si sottintende, da questo punto in poi, che la sommatoria sia per ogni $i=1,\ldots,N$.
 \\
 Procedendo con il calcolo del gradiente di $L$ si ottengono i seguenti risultati:
 \begin{equation}
@@ -196,9 +196,9 @@ Procedendo con il calcolo del gradiente di $L$ si ottengono i seguenti risultati
 \end{equation}
 L'equazione (\ref{eq:deriv_lagrang_rispetto_w}) suggerisce che il vettore $\mathbf{w}$ non sia altro che una combinazione lineare di alcuni vettori di \emph{training} (per alcuni di loro $\alpha_i$ sarà pari a $0$), mentre l'equazione (\ref{eq:deriv_lagrang_rispetto_b}) sarà utile più avanti.
 
-A questo punto si introduce il cosiddetto \textit{Problema lagrangiano duale}: invece di \emph{minimizzare} rispetto a $\mathbf{w}$ e $b$, si può \emph{massimizzare} rispetto ad $\alpha$ con vincoli le relazioni ottenute precedentemente per $\mathbf{w}$ e $b$ (equazioni (\ref{eq:deriv_lagrang_rispetto_w}) e (\ref{eq:deriv_lagrang_rispetto_b}))\footnote{Il teorema di Kunh-Tucker assicura che la soluzione di questo problema è la stessa del problema originario.}.
+A questo punto si introduce il cosiddetto \textit{problema lagrangiano duale}: invece di \emph{minimizzare} rispetto a $\mathbf{w}$ e $b$, si può \emph{massimizzare} rispetto ad $\alpha$ con vincoli le relazioni ottenute precedentemente per $\mathbf{w}$ e $b$ (equazioni (\ref{eq:deriv_lagrang_rispetto_w}) e (\ref{eq:deriv_lagrang_rispetto_b}))\footnote{Il teorema di Kunh-Tucker assicura che la soluzione di questo problema è la stessa del problema originario; per maggiori informazioni si consulti \citep{Tutorial_burges} e \citep{Libro_SVM2}}.
 
-Dato che l'equazione (\ref{eq:deriv_lagrang_rispetto_w}) restituisce una definizione per $\mathbf{w}$, possiamo sostituire questo risultato nella lagrangiana $L$ (eq.ne (\ref{eq:lagrangiana})), ottenendo:
+Dato che l'equazione (\ref{eq:deriv_lagrang_rispetto_w}) restituisce una espressione per $\mathbf{w}$, possiamo sostituire questo risultato nella lagrangiana $L$ (eq.ne (\ref{eq:lagrangiana})), ottenendo:
 \begin{eqnarray}\nonumber
 \label{eq:lagrangiana_finale1}
 &L(\mathbf{w},b)	= \dfrac{1}{2}\left ( \sum_i \alpha_iy_i\mathbf{x}_i \right )\cdot\left (\sum_j\alpha_jy_j\mathbf{x}_j\right )+\\
@@ -275,8 +275,8 @@ Si prenda, come esempio, la situazione proposta di seguito (Figura \ref{fig:Data
 Si nota chiaramente come, in questo caso, non esista alcun iperpiano separatore. 
 Nonostante ciò, modificando leggermente il modello di SVM introdotto fino a questo punto, si può dimostrare che è ancora possibile utilizzare una SVM lineare.\\
 
-La chiave di questo nuovo modello sta nell'introduzione di una \emph{variabile slack}, in modo tale da rilassare quei vincoli rigidi che non permetterebbero l'uso di una SVM lineare. \\
-Precedentemente, i margini erano definiti dei vincoli:
+La chiave di questo nuovo modello sta nell'introduzione di una \emph{variabile di slack}, in modo tale da rilassare quei vincoli rigidi che non permetterebbero l'uso di una SVM lineare. \\
+Precedentemente, i margini erano definiti dai vincoli:
 \begin{equation}
 \label{eq:vincolo_hard_margin}
 y_i\left (\mathbf{x}_i\cdot\mathbf{w}+b \right )\geq1   \quad     y_i\in\left\lbrace-1,1\right \rbrace
@@ -331,7 +331,7 @@ La situazione che si è andata a definire, graficamente, appare in Figura \ref{f
     \label{fig:soft_margin}
   \end{figure}
 
-Il nuovo vincolo permette al margine funzionale di essere minore di 1. L'errore che si commette è, però, $C\xi_i$, sia per i punti che ricadrebbero nella parte corretta dell'iperpiano separatore ($0<\xi_i\leq1$), sia per quelli che sarebbero nel lato sbagliato ($\xi>1$).
+Il nuovo vincolo permette al margine funzionale di essere minore di 1. L'errore che si commette è, però, $C\xi_i$, sia per i punti che ricadrebbero nella parte corretta dell'iperpiano separatore ($0<\xi_i\leq1$), sia per quelli che sarebbero nel lato sbagliato ($\xi_i>1$).
 Si sono, quindi, "rilassati" i vincoli in modo tale da classificare dati non-separabili, con una penalità linearmente proporzionale all'entità dell'errore commesso sul \emph{training set}.\\
 
 Il nuovo problema di ottimizzazione è il seguente:
@@ -424,7 +424,7 @@ dove $\beta_i$ sono i moltiplicatori di Lagrange necessari per vincolare la posi
  \end{figure}
  
 \section{SVM non lineare per classificazione binaria}
-Nonostante l'introduzione della variante Soft-Margin della SVM possa il qualche caso tornare utile, può capitare che anche questa strategia sia difficilmente applicabile o produca risultati non soddisfacenti (si rimanda al Capitolo X dove si discuterà come avere una stima delle prestazioni di un classificatore).
+Nonostante l'introduzione della variante Soft-Margin della SVM possa rimuovere l'ipotesi restrittiva di separabilità lineare del \emph{training set}, può capitare che anche questa strategia sia difficilmente applicabile o produca risultati non soddisfacenti (si rimanda al Capitolo \ref{cap:prestazioni} dove si discuterà come avere una stima delle prestazioni di un classificatore).
 \\
 
 L'intento della classificazione SVM non-lineare è quello di trasformare lo spazio dei vettori di \emph{training} non linearmente separabili $\mathbb{R}^d$ in uno spazio $\mathcal{H}$ (la cui dimensionalità sarà maggiore di $d$ o anche, potenzialmente, infinita) in cui i campioni siano disposti in modo tale da permettere l'utilizzo di una SVM lineare. Questo passo si giustifica tramite il \emph{Teorema di Cover sulla separabilità}, il quale afferma che un problema di classificazione complesso, formulato attraverso una trasformazione non-lineare dei dati in uno spazio ad alta dimensionalità, ha maggiore probabilità di essere linearmente separabile che in uno spazio a bassa dimensionalità.
@@ -434,7 +434,7 @@ Si ricerca quindi una funzione di trasformazione:
 \label{eq:funzione_di_trasformazione}
 \Phi:\mathbb{R}^d\rightarrow\mathcal{H}
 \end{equation}
-Graficamente, accade una situazione del genere (Figura \ref{fig:funzione_di_trasformazione}).
+Graficamente, in Figura \ref{fig:funzione_di_trasformazione} è riportato un esempio della situazione in esame.
  \begin{figure}[!ht]
 \begin{tikzpicture}[x=1cm,y=1cm]
 %\draw[color=gray!20] (0,0) grid (6,6);
@@ -478,17 +478,17 @@ L=\sum_i\alpha_i-\dfrac{1}{2}\sum_i\sum_j\alpha_i\alpha_jy_iy_j\Phi(\mathbf{x}_i
 \end{equation}
 \begin{equation}
 \label{eq:regola_di_decisione_con_funzione_di_trasformazione}
-f=\sum_i\alpha_iy_i\Phi(\mathbf{x}_i)\cdot\Phi(\mathbf{u})+b
+f(\mathbf{u})=\sum_i\alpha_iy_i\Phi(\mathbf{x}_i)\cdot\Phi(\mathbf{u})+b
 \end{equation}
 Come già accennato in precedenza, operativamente, entrambe le due fasi sono caratterizzate solo dal prodotto scalare dei vettori trasformati; questo suggerisce che non sia necessaria la conoscenza di $\Phi$, in quanto è sufficiente definire un \emph{kernel}:
 \begin{equation}
 \label{eq:kernel_trick}
 K:\mathbb{R}^d\times\mathbb{R}^d\rightarrow\mathbb{R}\quad\text{tale che}\quad K(\mathbf{x},\mathbf{y})=\Phi(\mathbf{x})\cdot\Phi(\mathbf{y})
 \end{equation}
-Esistono condizioni necessari e sufficienti affinché una data funzione $K$ sia un \emph{kernel}, ovvero affinchè esistano uno spazio $\mathcal{H}$ e una funzione di trasformazione $\Phi$, tali che in $\mathcal{H}$ sia definito il prodotto scalare. \\
+Esistono condizioni necessari e sufficienti affinché una data funzione $K$ sia un \emph{kernel}, ovvero affinchè esistano uno spazio $\mathcal{H}$ e una funzione di trasformazione $\Phi$, tali che valga l'equazione (\ref{eq:kernel_trick}) per $\mathbf{x},\mathbf{y}\in\mathbb{R}^d$. \\
 La condizioni di Mercer sono condizioni necessarie e sufficienti per definire per quali famiglie di \emph{kernel} $K$ esiste la coppia $\left\lbrace\mathcal{H},\Phi\right\rbrace$ con le proprietà presentate precedentemente.\\
 \begin{teorema}
-Sia $K(\mathbf{x},\mathbf{y})$ un kernel continuo che può essere espanso nella serie
+Sia $K(\mathbf{x},\mathbf{y})$ una funzione continua che può essere espansa nella serie
 \begin{equation}
 \label{eq:condizioni_di_Mercer1}
 K(\mathbf{x},\mathbf{y})=\sum_{i=1}^\infty\Phi(\mathbf{x})_i\cdot\Phi(\mathbf{y})_i
@@ -514,18 +514,17 @@ L=\sum_i\alpha_i-\dfrac{1}{2}\sum_i\sum_j\alpha_i\alpha_jy_iy_jK(\mathbf{x}_i,\m
 \end{equation}
 \begin{equation}
 \label{eq:regola_di_decisione_con_kernel}
-f=\sum_i\alpha_iy_iK(\mathbf{x}_i,\mathbf{u})+b
+f\mathbf{u})=\sum_i\alpha_iy_iK(\mathbf{x}_i,\mathbf{u})+b
 \end{equation}
 Alcuni dei \emph{kernel} più famosi e usati sono i seguenti:
 \begin{itemize}
-\item \textbf{Lineare}: $K(\mathbf{x},\mathbf{y})=\mathbf{x}\cdot\mathbf{y}$
 \item \textbf{Polinomiale}: $K(\mathbf{x},\mathbf{y})=\left (1+\mathbf{x}\cdot\mathbf{y}\right )^d$ con $d>0$
 \item \textbf{Radiale Gaussiano} (RBF):  $K(\mathbf{x},\mathbf{y})=\exp\left (-\dfrac{\vert\vert\mathbf{x}-\mathbf{y}\vert\vert^2}{2\sigma^2}\right )$ il quale introduce una dimensione dello spazio delle \emph{feature} trasformate infinita.
 \end{itemize}
 \section{Estensioni multiclasse}
 Un problema con più classi si affronta mediante SVM esprimendolo come combinazione di problemi binari. Assumendo di operare con $C$ classi, tale operazione si effettua tipicamente in due modi possibili:
 \begin{itemize}
-\item l'approccio \emph{one-against-one} (OAO) calcola mediante SVM binaria una \emph{regola di decisione} $f_{ij}$ per ogni coppia di classi, per un totale di $C(C-1)/2$ funzioni discriminanti, e classifica un campione incognito $\mathbf{u}\in\mathbb{R}^d$ mediante "votazione" (se $f_{ij}>0$ si dà un voto alla classe $i$-esima, altrimenti alla $j$-esima; si assegna infine $\mathbf{u}$ alla classe che ha ricevuto più voti);
+\item l'approccio \emph{one-against-one} (OAO) calcola mediante SVM binaria una \emph{regola di decisione} $f_{ij}$ per ogni coppia di classi, per un totale di $C(C-1)/2$ funzioni discriminanti, e classifica un campione incognito $\mathbf{u}\in\mathbb{R}^d$ mediante "votazione" (se $f_{ij}(\mathbf{u})>0$ si dà un voto alla classe $i$-esima, altrimenti alla $j$-esima; si assegna infine $\mathbf{u}$ alla classe che ha ricevuto più voti);
 \item l'approccio \emph{one-against-all} (OAA) calcola mediante SVM binaria una \emph{regola di decisione} $f_{i}$ per ogni decisione del tipo "classe $i$ contro classe non-$i$", per un totale di $C$ funzioni discriminanti e assegna $\mathbf{u}\in\mathbb{R}^d$ alla classe $i$-esima se $f_i(\mathbf{u})\geq f_j(\mathbf{u})$ per ogni $j=1,\ldots,C$ con $i\neq j$.
 \end{itemize}
 

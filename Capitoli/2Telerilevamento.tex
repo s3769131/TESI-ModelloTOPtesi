@@ -10,7 +10,7 @@ Nel nostro caso, ci focalizzeremo in particolare nell'ambito dell'Osservazione d
 \clearpage
 
 
-\section{Cenni sul Telerilevamento}
+\section{Cenni sul telerilevamento}
 
 
 \subsection{Sensori e piattaforme}
@@ -35,7 +35,7 @@ Il procedimento generale è il seguente:
 \subsection{Tipologie di sensori}
 
 Generalmente, i sensori per telerilevamento vengono divisi in due macro-famiglie, i sensori passivi e quelli attivi.
-La prima tipologia non trasmette alcun segnale, bensì, riceve unicamente la radiazione emessa dall'oggetto in esame, ovvero la radiazione elettromagnetica emessa dalla porzione di superficie, la quale può essere spontanea (tipicamente radiazione nell'intervallo dell'infrarosso vcino) oppure la radiazione riflessa o diffusa proveniente dal sole (radiazione infrarossa e/o nello spettro del visibile).
+La prima tipologia non trasmette alcun segnale, bensì, riceve unicamente la radiazione emessa dall'oggetto in esame, ovvero la radiazione elettromagnetica emessa dalla porzione di superficie, la quale può essere spontanea (tipicamente radiazione nell'intervallo dell'infrarosso vicino) oppure la radiazione riflessa o diffusa proveniente dal sole (radiazione infrarossa e/o nello spettro del visibile).
 I sensori attivi, invece, trasmettono un'onda elettromagnetica nella direzione della superficie in esame e analizzano il segnale (simile ad un eco sonoro) ritrasmesso dalla porzione di suolo stessa.
 Tali onde elettromagnetiche sono tipicamente segnali laser, usati da sensori \emph{LIght Detection And Ranging} (LIDAR), oppure a microonde, acquisiti tramite sensori \emph{RAdio Detection And Ranging} (RADAR).
 \\
@@ -45,7 +45,7 @@ La nostra trattazione si baserà unicamente su segnali rilevati tramite sensori 
 
 \subsection{Il ruolo della risoluzione}
 Un parametro di vitale importanza per un sensore orientato all' \emph{EO} è la risoluzione, con la quale si intende una risoluzione spaziale, temporale e spettrale.
-La prima rappresenta il più piccolo dettaglio della superficie in esame che risulta distinguibile dopo essere stata estratta dal sensore, in particolare questo parametro è, al meglio, come la grandezza della superifcie rappresentata da un singolo pixel.
+La prima rappresenta il più piccolo dettaglio della superficie in esame che risulta distinguibile dopo essere stata estratta dal sensore, in particolare questo parametro è, al meglio, come la grandezza della superficie rappresentata da un singolo pixel.
 La risoluzione temporale, invece, è definita come la frequenza con cui il sensore osserva una stessa porzione di superifice. 
 Essa è infatti definita come il tempo intercorso tra due passaggi del sensore sulla stessa area geografica, intervallo di tempo che può variare dal mese fino, addirittura, a poche decine di minuti.
 Infine, la risoluzione spettrale viene definita come il numero di bande (o canali) misurate per ciascun pixel e dalla larghezza di banda di ogni singolo canale. Ad esempio, il sensore iperspettrale AVIRIS campiona la radiazione incidente acquisendo $224$ bande distinte, ognuna avente una larghezza pari a $9.3$ nm, rendendolo un sensore ad alta risoluzione temporale, a differenza di sensori pancromatici che elaborano solamente l'intervallo di lunghezze d'onda della radiazione visibile.
@@ -192,16 +192,16 @@ Oltre alla generazione di mappe tematiche tramite sistemi di telerilevamento, il
 
 \subsection{Spazi di rappresentazione}
 
-Esistono tre principali metodologie di rappresentazione dei dati, la rappresentazione nello "spazio-immagine" (\emph{Image Space}), la rappresentazione nello "spazio spettrale" (\emph{Spectral Space}) e quella nello "spazio delle feature" (\emph{Fauture Space}). La prima e più immediata consiste nel visualizzare i dati canale per canale, oppure, tramite terne RGB. La seconda tipologia consiste, invece, nel visualizzare per ciascun pixel, i livelli di grigio di ogni canale, per rappresentarli poi in un grafico. La rappresentazione nello "spazio delle \emph{feature}" si basa sull'assegnazione di assi cartesiani distinti ad ogni banda, e, così facendo, ad ogni pixel viene assopciato un vettore n-dimensionale, con n il numero di canali. Quest'ultima rappresentazione non solamente evidenzia i livelli di grigio dei pixel ma anche la distribuzione statistica nelle varie bande, rendendola generalmente piu vantaggiosa rispetto alle altre due in quanto a differenti distribuzioni nello spazio delle feature corrispondono tipicamente a differenti coperture di suolo.  
+Esistono tre principali metodologie di rappresentazione dei dati, la rappresentazione nello "spazio-immagine" (\emph{Image Space}), la rappresentazione nello "spazio spettrale" (\emph{Spectral Space}) e quella nello "spazio delle feature" (\emph{Fauture Space}). La prima e più immediata consiste nel visualizzare i dati canale per canale, oppure, tramite terne RGB. La seconda tipologia consiste, invece, nel visualizzare per ciascun pixel, i livelli di grigio di ogni canale, per rappresentarli poi in un grafico. La rappresentazione nello "spazio delle \emph{feature}" si basa sull'assegnazione di assi cartesiani distinti ad ogni banda, e, così facendo, ad ogni pixel viene associato un vettore n-dimensionale, con n il numero di canali. Quest'ultima rappresentazione non solamente evidenzia i livelli di grigio dei pixel ma anche la distribuzione statistica nelle varie bande, rendendola generalmente più vantaggiosa rispetto alle altre due in quanto a differenti distribuzioni nello spazio delle \emph{feature} corrispondono tipicamente a differenti coperture di suolo.  
 
 \begin{figure}[!ht]
 \center
-\subfigure[Rappresentazione nello spazio spettrale di un pixel di una immagine iperspettrale (220 canali) ottenuta tramite AVIRIS.]{\includegraphics[width=0.4\textwidth]{indianpine_spectral}}
+\subfigure[Rappresentazione nello spazio spettrale di un pixel di una immagine iperspettrale (220 canali) ottenuta tramite AVIRIS]{\includegraphics[width=0.4\textwidth]{indianpine_spectral}}
 \hspace{3mm}
-\subfigure[Rappresentazione nello spazio immagine.]{\includegraphics[width=0.4\textwidth]{vaticano}}
+\subfigure[Rappresentazione nello spazio immagine]{\includegraphics[width=0.4\textwidth]{vaticano}}
 \\
-\subfigure[Rappresentazione nello spazio delle feature.]{\includegraphics[width=0.5\textwidth]{featurespace}}
-\caption{Spazi di rappresentazione per un'immagine multispettrali.}
+\subfigure[Rappresentazione nello spazio delle \emph{feature}]{\includegraphics[width=0.5\textwidth]{featurespace}}
+\caption{Spazi di rappresentazione per un'immagine multispettrale}
 \label{fig:spaziorappresentazione}
 \end{figure}
 
@@ -216,7 +216,7 @@ A fini di classificazione, la rappresentazione nello spazio delle \emph{feature}
 \\
 
 I classificatori possono essere divisi in due macro-famiglie, classificatori supervisionati (\emph{supervised}) e non supervisionati (\emph{unsupervised}). La prima tipologia prevede principalmente due fasi, una fase iniziale di addestramento (\emph{training}) e una di verifica (\emph{test}); nel primo step, il sistema ottimizza parametri del classificatore tramite un insieme di pixel preclassificati (\emph{training} set), fino a raggiungere una adeguata accuratezza. Successivamente, il sistema viene testato in modo analogo alla fase di training, attraverso un insieme di pixel preclassificati ma differenti rispetto a quelli coinvolti nella fase di \emph{training}.\\
-Nei classificatori non supervisionati, invece, non viene utilizzato alcun \emph{training set}, solitamente perchè non sono note nè facilmente identificabili le classi coinvolte nell'applicazione in esame. 
+Nei classificatori non supervisionati, invece, non viene utilizzato alcun \emph{training set}, solitamente perché non sono note né facilmente identificabili le classi coinvolte nell'applicazione in esame. 
 \\
 
 Nei capitoli a seguire la nostra attenzione sarà focalizzata sul concetto di classificazione supervisionata, che si basa, in generale, su tre assunti:

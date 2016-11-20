@@ -6,7 +6,7 @@
 
 Una SVM (\emph{Support Vector Machine}) è un modello di apprendimento supervisionato associato ad algoritmi largamente utilizzati per l'analisi statistica di dati e il \emph{pattern recognition} (tra cui anche il problema della classificazione).
 L'SVM è un modello abbastanza recente; anche se la sua formulazione risale agli anni '60, solo negli ultimi 15/20 anni si è registrato un incremento significativo nell'uso di algoritmi SVM per classificazione \citep{Book_svm}.
-La sua fortuna risiede nel fatto che possa essere facilmente applicato a molti campi ed alle sue proprietà ?? in termini di capacità di generalizzazione e robustezza all'aumento del numero di \emph{feature}.%senza stravolgere la semplicità che caratterizza questi classificatori.
+La sua fortuna risiede nel fatto che possa essere facilmente applicato a molti campi ed alle sue proprietà analitiche in termini di capacità di generalizzazione e robustezza all'aumento del numero di \emph{feature}.%senza stravolgere la semplicità che caratterizza questi classificatori.
 \\
 Questo capitolo servirà per introdurre la teoria matematica su cui si basa un classificatore SVM e sarà impostato nel seguente modo: si inizierà descrivendo dettagliatamente il modello più semplice di SVM (SVM lineare per classificazione binaria), poi si proseguirà con la descrizione di come è possibile estendere questo modello per una classificazione non-lineare e, infine, verranno introdotte le possibili modifiche che permettono la classificazione multiclasse.
 \clearpage
@@ -348,7 +348,7 @@ Allo stesso modo del caso lineare, possono essere usati i moltiplicatori di Lagr
 \label{eq:lagrangiana_sofmargin}
 L=\dfrac{1}{2}\vert\vert\mathbf{w}\vert\vert^2+C\sum_i\xi_i+\sum_i\alpha_i\left [1-\xi_i-y_i\left (\mathbf{x}_i\cdot\mathbf{w}+b \right )\right ]-\sum_i\beta_i\xi_i
 \end{equation}
-dove $\beta_i$ sono i moltiplicatori di Lagrange necessari per vincolare la positività della \emph{variabile slack}.	
+dove $\beta_i$ sono i moltiplicatori di Lagrange necessari per vincolare la positività delle \emph{variabili di slack}.	
 \\
 
 \'E interessante notare come l'applicazione di una soft-margin SVM possa avere prestazioni migliori della hard-margin SVM anche per dataset linearmente separabili. Per chiarificarne il motivo, un esempio è riportato nella figura successiva: il \emph{training set} permetterebbe l'uso di una hard-margin SVM, ma il risultato  avrebbe un margine piuttosto limitato, confrontato con quello che si otterrebbe in caso di soft-margin SVM. \\
@@ -485,7 +485,7 @@ Come già accennato in precedenza, operativamente, entrambe le due fasi sono car
 \label{eq:kernel_trick}
 K:\mathbb{R}^d\times\mathbb{R}^d\rightarrow\mathbb{R}\quad\text{tale che}\quad K(\mathbf{x},\mathbf{y})=\Phi(\mathbf{x})\cdot\Phi(\mathbf{y})
 \end{equation}
-Esistono condizioni necessari e sufficienti affinché una data funzione $K$ sia un \emph{kernel}, ovvero affinchè esistano uno spazio $\mathcal{H}$ e una funzione di trasformazione $\Phi$, tali che valga l'equazione (\ref{eq:kernel_trick}) per $\mathbf{x},\mathbf{y}\in\mathbb{R}^d$. \\
+Esistono condizioni necessari e sufficienti affinché una data funzione $K$ sia un \emph{kernel}, ovvero affinché esistano uno spazio $\mathcal{H}$ e una funzione di trasformazione $\Phi$, tali che valga l'equazione (\ref{eq:kernel_trick}) per $\mathbf{x},\mathbf{y}\in\mathbb{R}^d$. \\
 La condizioni di Mercer sono condizioni necessarie e sufficienti per definire per quali famiglie di \emph{kernel} $K$ esiste la coppia $\left\lbrace\mathcal{H},\Phi\right\rbrace$ con le proprietà presentate precedentemente.\\
 \begin{teorema}
 Sia $K(\mathbf{x},\mathbf{y})$ una funzione continua che può essere espansa nella serie
@@ -498,7 +498,7 @@ Affinché tale espansione sia valida e per la sua convergenza assoluta, è neces
 \label{eq:condizioni_di_Mercer2}
 \int\int K(\mathbf{x},\mathbf{y})g(\mathbf{x})g(\mathbf{y})d\mathbf{x}d\mathbf{y}\geq0
 \end{equation}
-sia vera per ogni $g(\cdot)$ che soddisfano
+sia vera per ogni $g(\cdot)$ che soddisfa
 \begin{equation}
 \label{eq:}
 \int g^2(\mathbf{x})d\mathbf{x}<\infty
@@ -514,7 +514,7 @@ L=\sum_i\alpha_i-\dfrac{1}{2}\sum_i\sum_j\alpha_i\alpha_jy_iy_jK(\mathbf{x}_i,\m
 \end{equation}
 \begin{equation}
 \label{eq:regola_di_decisione_con_kernel}
-f\mathbf{u})=\sum_i\alpha_iy_iK(\mathbf{x}_i,\mathbf{u})+b
+f(\mathbf{u})=\sum_i\alpha_iy_iK(\mathbf{x}_i,\mathbf{u})+b
 \end{equation}
 Alcuni dei \emph{kernel} più famosi e usati sono i seguenti:
 \begin{itemize}

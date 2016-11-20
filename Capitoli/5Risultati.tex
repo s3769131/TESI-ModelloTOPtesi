@@ -32,7 +32,7 @@ come:
 PA_i=\dfrac{e_{ii}}{\sum_{j=1}^Ce_{ij}}
 \end{equation}
 Analogamente, si può definire \emph{Omission Error} (OE) di $\omega_i$ la frazione complementare di pixel classificati erroneamente.
-\item L' \emph{average accuracy} (AA) delle C classi è la media delle C \emph{producer accuracy} ed è data da:
+\item L' \emph{average accuracy} (AA) delle C classi è la media delle $C$ \emph{producer accuracy} ed è data da:
 \begin{equation}
 \label{eq:AA}
 AA=\dfrac{1}{C}\sum_{i=1}^C{PA_i}
@@ -43,7 +43,7 @@ AA=\dfrac{1}{C}\sum_{i=1}^C{PA_i}
 OA= \dfrac{1}{t}\sum_{i=1}^C e_{ij}
 \end{equation}
 dove $t$ è il numero di pixel di test.
-\item Il parametro "$\kappa$", rappresenta una modifica dell' OA finalizzata a tenere conto in modo più completo della distribuzione degli errori tra le diverse classi, ed è dato da:
+\item Il parametro "$\kappa$", rappresenta una modifica dell'OA finalizzata a tenere conto in modo più completo della distribuzione degli errori tra le diverse classi, ed è dato da:
 \begin{equation}
 \label{eq:K}
 \kappa=\dfrac{OA-\frac{1}{t^2}\sum_{i=1}^C\sum_{j=1}^C\sum_{k=1}^C e_{ij}e_{ki}}{1-\frac{1}{t^2}\sum_{i=1}^C\sum_{j=1}^C\sum_{k=1}^C e_{ij} e_{ki}}
@@ -58,7 +58,7 @@ dove $t$ rappresenta ancora il numero di pixel di test utilizzati.
 
 %\lhead{Capitolo \ref{chapter_Risultati_sperimentali}. \emph{Risultati sperimentali}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-In questo capitolo verranno presentati tre casi di studio e verrà fatta un'analisi delle prestazioni al variare dei parametri dell’algoritmo  HOG, evidenziando i valori ottimali individuti. 
+In questo capitolo verranno presentati tre casi di studio e verrà fatta un'analisi delle prestazioni al variare dei parametri dell'algoritmo HOG, evidenziando i valori ottimali individuati. 
 Successivamente verranno presentati i risultati ottenuti valutando anche gli aspetti per cui questo algoritmo ha dato risultati parzialmente soddisfacenti.
 
 \clearpage
@@ -69,7 +69,7 @@ L'analisi condotta ha coinvolto l'uso di immagini ad elevata risoluzione spazial
 
 Il \emph{dataset} per ogni esperimento è costituito da un'immagine telerilevata, dalla mappa di \emph{training} e dalla mappa di \emph{testing} corrispondenti.
 Le immagini telerilevate sono state acquisite dal sensore passivo \textsc{SPOT5 HRG} a tre canali, corrispondenti alle lunghezze d'onda del verde (G, $495 - 570\text{ } nm$), del rosso (R, $620 -  750\text{ } nm$) e del vicino infrarosso (NIR, \emph{Near InfraRed} $0.75 - 1.4\text{ } \mu m$).
-Sebbene i canali spettrali di SPOT5 HRG avrebbero risoluzione spaziale nativa di 10 m, il sensore stesso acquisisce anche un canale pancromatico, associato all'intero intervallo di lunghezza d'onda (dal visibile al vicino infrarosso) e caratterizzato da risoluzione spaziale di 5 m. In fase di pre-elaborazione, tecniche di \emph{pansharpening}\footnote{Pansharpening è un processo di fusione di immagini pancromatiche ad alta risoluzione con immagini multispettrale a risoluzione inferiore per creare una singola immagine multispettrale ad alta risoluzione.} sono state applicate al fine di fondere le informazione fornite dai dati multispettrali e pancromatici e generare un'immagine G-R-NIR a risoluzione spaziale di 5 m. Inoltre, SPOT5 HRG permette anche acquisizioni di coppie stereo di immagini. L'applicazione di tecniche di super-risoluzione ad una di tali coppie permette di generare un'ulteriore immagine volta a stimare la distribuzione spaziale della radianza ricevuta ad una risoluzione di 2.5 m. Sono stati usati a fini di sperimentazione dati ottenuti da entrambe le tipologie di pre-elaborazione e quindi caratterizzati da pixel di dimensione pari a 2.5 e 5 m.
+Sebbene i canali spettrali di SPOT5 HRG avrebbero risoluzione spaziale nativa di 10 m, il sensore stesso acquisisce anche un canale pancromatico, associato all'intero intervallo di lunghezza d'onda (dal visibile al vicino infrarosso) e caratterizzato da risoluzione spaziale di 5 m. In fase di pre-elaborazione, tecniche di \emph{pansharpening}\footnote{Pansharpening è un processo di fusione di immagini pancromatiche ad alta risoluzione con immagini multispettrali a risoluzione inferiore per creare una singola immagine multispettrale ad alta risoluzione.} sono state applicate al fine di fondere le informazione fornite dai dati multispettrali e pancromatici e generare un'immagine G-R-NIR a risoluzione spaziale di 5 m. Inoltre, SPOT5 HRG permette anche acquisizioni di coppie stereo di immagini. L'applicazione di tecniche di super-risoluzione ad una di tali coppie permette di generare un'ulteriore immagine volta a stimare la distribuzione spaziale della radianza ricevuta ad una risoluzione di 2.5 m. Sono stati usati a fini di sperimentazione dati ottenuti da entrambe le tipologie di pre-elaborazione e quindi caratterizzati da pixel di dimensione pari a 2.5 e 5 m.
  
 
 \subsection{Amiens 2006 - 5m - 10 classi}
@@ -88,18 +88,18 @@ L'insieme delle classi $\Omega=\left\lbrace\omega_1,\omega_2,\ldots,\omega_{10}\
 \item Specchi d'acqua
 \end{enumerate}
 Nella Figura \ref{fig: Amiens65m} vengono presentate le immagini caratterizzanti il primo \emph{dataset}. 
-\begin{lstlisting}[float=b,title={Distribuzione dei pixel di training (TR) e test (TE) classe per classe.},
+\begin{lstlisting}[title={Distribuzione dei pixel di training (TR) e test (TE) classe per classe.},
                    label=lst:esempio, frame=lines]
 TR:				TE:
 Class 1 : 72483 		Class 1 : 70299
-Class 2 : 149917 	Class 2 : 68435
+Class 2 : 149917 	        Class 2 : 68435
 Class 3 : 17945 		Class 3 : 10019
 Class 4 : 25121 		Class 4 : 16012
-Class 5 : 233481 	Class 5 : 115570
-Class 6 : 113030 	Class 6 : 48615
+Class 5 : 233481 	        Class 5 : 115570
+Class 6 : 113030 	        Class 6 : 48615
 Class 7 : 62854 		Class 7 : 54582
 Class 8 : 90718 		Class 8 : 50701
-Class 9 : 7903 		Class 9 : 3012
+Class 9 : 7903 		        Class 9 : 3012
 Class 10: 34833 		Class 10: 27924
 Total   : 808285		Total   : 465169
 \end{lstlisting}
@@ -113,7 +113,7 @@ Total   : 808285		Total   : 465169
      \hspace{4mm}
     \subfigure[Legenda classi della mappa di \emph{training}]{
       \includegraphics[scale=0.5]{Leggenda_2006_10classi}}
-    \caption{\emph{Dataset} con composizione RBG in falso colore ($2000\times2200$ pixel) acquisita su Amiens (Francia) dal sensore \textsc{SPOT5 HRG}}
+    \caption{\emph{Dataset} con composizione RGB in falso colore ($2000\times2200$ pixel) acquisito su Amiens (Francia) dal sensore \textsc{SPOT5 HRG}}
     \label{fig: Amiens65m}
   \end{figure}
   
@@ -156,7 +156,7 @@ Nella Figura \ref{fig: Amiens62_5m} vengono presentate le immagini caratterizzan
      \hspace{4mm}
     \subfigure[Legenda classi della mappa di \emph{training}]{
       \includegraphics[scale=0.5]{Leggenda_7classi}}
-    \caption{\emph{Dataset} con composizione RBG in falso colore ($4001\times4400$ pixel) acquisita su Amiens (Francia) dal sensore \textsc{SPOT5 HRG} nel 2006}
+    \caption{\emph{Dataset} con composizione RGB in falso colore ($4001\times4400$ pixel) acquisito su Amiens (Francia) dal sensore \textsc{SPOT5 HRG} nel 2006}
     \label{fig: Amiens62_5m}
   \end{figure}
 \clearpage
@@ -177,7 +177,7 @@ L'insieme delle classi $\Omega=\left\lbrace\omega_1,\omega_2,\ldots,\omega_{7}\r
 Nella Figura \ref{fig: Amiens122_5m} vengono presentate le immagini caratterizzanti il primo \emph{dataset}; si osservi con attenzione la composizione dell'immagine di \emph{training}.\\
 Anche in questo caso si nota come l'immagine a 2.5 m sia sfocata, rendendo il processo di classificazione largamente complesso. Infatti, la risoluzione spaziale di tale immagine è da ritenersi peggiore di 2.5 m, sempre a causa della parziale efficacia del metodo di super-risoluzione applicato in fase di pre-elaborazione.
 
-\begin{lstlisting}[float=b,title={Distribuzione dei pixel di training(TR) e test(TE) classe per classe.},
+\begin{lstlisting}[float=t,title={Distribuzione dei pixel di training (TR) e test (TE) classe per classe.},
                    label=lst:esempio, frame=lines]
 TR:					TE:
 Class 1: 132005				Class 1: 60793
@@ -200,44 +200,44 @@ Total  : 2479774			Total  : 1366266
      \hspace{4mm}
     \subfigure[Legenda classi della mappa di \emph{training}]{
       \includegraphics[scale=0.5]{Leggenda_7classi}}
-    \caption{\emph{Dataset} con composizione RBG in falso colore ($4001\times4400$ pixel) acquisita su Amiens (Francia) dal sensore \textsc{SPOT5 HRG} nel 2012}
+    \caption{\emph{Dataset} con composizione RGB in falso colore ($4001\times4400$ pixel) acquisito su Amiens (Francia) dal sensore \textsc{SPOT5 HRG} nel 2012}
     \label{fig: Amiens122_5m}
   \end{figure}
 \clearpage
 
 \section{Applicazione del classificatore SVM}
-Il classificatore usato è un classificatore \emph{soft-margin} SVM con \emph{kernel} gaussiano. L'implementazione adottata è una variante \emph{ad hoc} della \texttt{LIBSVM} [RIF] scritta in \texttt{C++}.\\
+Il classificatore usato è un classificatore \emph{soft-margin} SVM con \emph{kernel} gaussiano. L'implementazione adottata è una variante \emph{ad hoc} della \texttt{LIBSVM} \citep{art_libsvm}  scritta in \texttt{C++}.\\
 Il setup utilizzato per la fase di classificazione è composto da un \texttt{MacBookPro Retina} con un processore dual core Intel Core i5 $2.8$ GHz e $16$ GB di memoria e un \texttt{iMac} con processore quad core Intel Core i7 $3.4$ GHz e $8$ GB di memoria. \\
 
 La fase di \emph{training} della SVM, la quale ha complessità temporale $O(n^\alpha)$ ($\alpha$ tipicamente compreso tra 2 e 3) polinomialmente proporzionale al numero di vettori di \emph{training}, ha impiegato, in media, 30 minuti per completare l'ottimizzazione dei parametri, mentre la fase di etichettatura (con complessità $O(n)$ dove $n$ è il numero di vettori da etichettare) ha impiegato, in media, un'ora per esperimento.\\
-L'ottimizzazione dei parametri C e sigma del classificatore è stata effettuata mediante l'applicazione del metodo in [REF] che minimizza un maggiorante sull'errore di generalizzazione del classificatore, detto \emph{"span bound"}, mediante l'algoritmo numerico di Powell (per approfondimenti si faccia riferimento a \citep{art_ottsvm1} e \citep{art_ottsvm2}).
+L'ottimizzazione dei parametri $C$ e $\sigma$ del classificatore è stata effettuata mediante l'applicazione del metodo in \citep{art_ottsvm1} che minimizza un maggiorante sull'errore di generalizzazione del classificatore, detto \emph{"span bound"}, mediante l'algoritmo numerico di Powell (per maggiori approfondimenti si faccia riferimento anche a \citep{art_ottsvm2}).
 
 
 %
 
 \section{Applicazione del metodo HOG}
-Qui di seguito verranno presentate le variazioni di accuratezza dell'algoritmo sviluppato al variare delle diverse combinazioni dei parametri in gioco, evidenziando le motivazioni alla base delle scelte progettuali effettuate. La calibrazione dei parametri è stata effettuata sul \emph{dataset} di Amiens 2006-5m\ref{fig: Amiens65m}. 
+Qui di seguito verranno presentate le variazioni di accuratezza dell'algoritmo sviluppato al variare delle diverse combinazioni dei parametri in gioco, evidenziando le motivazioni alla base delle scelte progettuali effettuate. La calibrazione dei parametri è stata effettuata sul \emph{dataset} di Amiens 2006-5m (Figura \ref{fig: Amiens65m}). 
 
 \subsection{Riduzione del rumore}
-La riduzione del rumore è stata effettuata, come già illustrato in figura \ref{fig:immagine_rumore} nel Capitolo \ref{cap:hog}, tramite un filtraggio passa-basso attraverso un filtro gaussiano bi-dimensionale avente varianza $\sigma$ pari a 2 pixel. Applicando questa gaussiana sia sull'immagine in ingresso all'algoritmo HOG sia sulle immagini HOG risultanti, si opera al fine di ottenere un notevole incremento nella \emph{average accuracy}. In particolare, l'utilizzo di un filtro gaussiano in ingresso aumenta l'AA del $12\%$, mentre l'algoritmo di \emph{noise cleaning} applicato prima e dopo l'estrazione delle \emph{feature} ha fatto registrare un'ulteriore incremento di 2 punti percentuali, portanto l'AA al $14\%$.
+La riduzione del rumore è stata effettuata, come già illustrato in figura \ref{fig:immagine_rumore} nel Capitolo \ref{cap:hog}, tramite un filtraggio passa-basso attraverso un filtro gaussiano bi-dimensionale avente varianza $\sigma$ pari a 2 pixel. Applicando questa gaussiana sia sull'immagine in ingresso all'algoritmo HOG sia sulle immagini HOG risultanti, si opera al fine di ottenere un notevole incremento nella \emph{average accuracy}. In particolare, l'utilizzo di un filtro gaussiano in ingresso aumenta l'AA del $12\%$, mentre l'algoritmo di \emph{noise cleaning} applicato prima e dopo l'estrazione delle \emph{feature} ha fatto registrare un'ulteriore incremento di 2 punti percentuali, portando l'AA al $14\%$.
 
 \subsection{Calcolo dei gradienti}
 Per quanto riguarda la scelta della maschera da utilizzare per il calcolo del gradiente, sono state valutate diverse opzioni, tra cui la semplice maschera in $1D$ a differenze separate $[-1, 0 ,1]$, la maschera cubica $[1,-8,0,8,-1]$ e filtri  $2D$ più classici come quelli di Prewitt e Sobel.\\
-I risultati migliori sono stati ottenuti con il \emph{kernel} più semplice a $1D$ $3\times1$. Variazioni sulla maschera utilizzata non hanno modificato significativamente i risultati per giustificare un aumento computazionale dovuto all'utilizzo di filtri più complessi.In particolare, con la maschera cubica $5\times5$ l'incremento della AA è stato di appena $+1,5\%$; negli altri casi valutati il risultato è sempre stato peggiore ($-7\%$ con Prewitt e $-3\%con Sobel$.Per questo motivo abbiamo deciso di utilizzare in tutti e tre i casi la soluzione più semplice e ottimale.\\
+I risultati migliori sono stati ottenuti con il \emph{kernel} più semplice a $1D$ $3\times1$. Variazioni sulla maschera utilizzata non hanno modificato significativamente i risultati per giustificare un aumento computazionale dovuto all'utilizzo di filtri più complessi. In particolare, con la maschera cubica $5\times5$ l'incremento della AA è stato di appena $+1,5\%$; negli altri casi valutati il risultato è sempre stato peggiore ($-7\%$ con Prewitt e $-3\%$ con Sobel). Per questo motivo abbiamo deciso di utilizzare in tutti e tre i casi la soluzione più semplice e ottimale.\\
 
 La direzione del gradiente è stata considerata tra $0$ e $\pi$ (ignorandone quindi il segno) in quanto le strutture geometriche di cui ci interessa avere informazioni (quali strade, fiumi, \ldots) possono essere identificate dalla direzione e non è invece rilevante il verso del gradiente.
 
 \subsection{Numero di componenti dei vettori delle \emph{feature}}
-Per quanto riguarda il numero di canali utilizzati per l'istogramma, la scelta che ha fornito prestazioni migliori è risultata essere quella con numero di bande pari a 4. Quantitativamente parlando, i risultati ottenuti con $9$\emph{orientation bins} hanno portato ad un decremento nella AA di $-11\%$. Inoltre, un aumento del numero di \emph{bins} comporta un aumento della risoluzione angolare e, pur apportando complessivamente poca informazione aggiuntiva,  aumenta la dimesionalità dello spazio delle \emph{feature} $\mathbb{R}^d$. Infatti, in primo luogo, all'aumentare di $d$, cresce la complessità computazionale del classificatore, che si traduce in un allungamento dei tempi di calcolo e in una maggiore occupazione di memoria.
+Per quanto riguarda il numero di canali utilizzati per l'istogramma, la scelta che ha fornito prestazioni migliori è risultata essere quella con numero di bande pari a 4. Quantitativamente parlando, i risultati ottenuti con $9$ \emph{orientation bins} hanno portato ad un decremento nella AA di $-11\%$. Inoltre, un aumento del numero di \emph{bins} comporta un aumento della risoluzione angolare e, pur apportando complessivamente poca informazione aggiuntiva, aumenta la dimensionalità dello spazio delle \emph{feature} $\mathbb{R}^d$. Infatti, in primo luogo, all'aumentare di $d$, cresce la complessità computazionale del classificatore, che si traduce in un allungamento dei tempi di calcolo e in una maggiore occupazione di memoria.
 
 \subsection{Dimensione delle celle e dei blocchi}
-La scelta di utilizzare celle di elevate dimensioni introduce un'alta correlazione tra i vettori delle \emph{feature}, mentre un' eccessiva riduzione \textbf{comporta l'inserimento di vettori così scorrelati da avere valori praticamente associabili a rumore.} Un compromesso  è stata trovato empiricamente attraverso diverse sperimentazioni ed è risultato essere diverso (come ci si può aspettare) a seconda della risoluzione spaziale con cui si operava:
+La scelta di utilizzare celle di elevate dimensioni introduce un'alta correlazione tra i vettori delle \emph{feature}, mentre un' eccessiva riduzione comporta marcata sensibilità al rumore. Un compromesso  è stata trovato empiricamente attraverso diverse sperimentazioni ed è risultato essere diverso (come ci si può aspettare) a seconda della risoluzione spaziale con cui si operava:
 \begin{itemize}
-\item cella da $4\times 4$ pixel, nel caso di pixel di dimensione spaziale pari a 5 m (Figure \ref{fig: Amiens65m})
+\item cella da $4\times 4$ pixel, nel caso di pixel di dimensione spaziale pari a 5 m (Figura \ref{fig: Amiens65m})
 \item cella da $2 \times 2$ pixel, nel caso di pixel di dimensione spaziale pari a 2.5 m (Figure \ref{fig: Amiens62_5m} e \ref{fig: Amiens122_5m})
 \end{itemize}
 
-Si è deciso di mantenere costante il numero di pixel usati per la normalizzazione dei blocchi ad un valore di $16\times16$, dal momento che questo valore non inficia la quantità di informazione a disposizione, ma semplicemente normalizza i valori gia calcolati, limitandone l'escursione entro un certo intervallo predefinito.
+Si è deciso di mantenere costante il numero di pixel usati per la normalizzazione dei blocchi ad un valore di $16\times16$, dal momento che questo valore non inficia la quantità di informazione a disposizione, ma semplicemente normalizza i valori già calcolati, limitandone l'escursione entro un certo intervallo predefinito.
 
 \clearpage
 
@@ -247,7 +247,7 @@ Si è deciso di mantenere costante il numero di pixel usati per la normalizzazio
 
 \'E riportata in Figura \ref{fig:ClassMap_Amiens2006_5m} la mappa di
 classificazione con \emph{feature} HOG aggiuntive in configurazione di
-$4$ \emph{bins}, celle di dimensione $4\times4$ pixel e blocchi di
+$4$ \emph{bin}, celle di dimensione $4\times4$ pixel e blocchi di
 normalizzazione con $16\times16$ pixel, con filtraggio gaussiano sia
 per l'immagine in ingresso che per le immagini HOG.
 
@@ -259,7 +259,7 @@ per l'immagine in ingresso che per le immagini HOG.
 \subfigure{
 \includegraphics[width=0.35\textwidth]{Leggenda_2006_10classi}}
 
-\caption{Mappa di classificazione ottenuta applicando SVM a feature spettrali e HOG per il \emph{dataset} \emph{Amiens 2006 - 5m - 10 classi}}
+\caption{Mappa di classificazione ottenuta applicando SVM a \emph{feature} spettrali e HOG per il \emph{dataset} \emph{Amiens 2006 - 5m - 10 classi}}
 
 \label{fig:ClassMap_Amiens2006_5m}
 
@@ -275,13 +275,13 @@ almeno non apprezzabile).
 Sono stati evidenziati, principalmente, due problemi:
 \begin{itemize}
 \item Il primo problema è legato alla risoluzione spaziale dell'immagine in
-ingresso che permette l'identificazione di strade abbstanza larghe, ma
+ingresso che permette l'identificazione di strade abbastanza larghe, ma
 rende difficoltosa l'identificazione di strade più strette.
 \item Il secondo problema si correla col fatto che il \emph{dataset} include due classi
 associate a corpi idrici: pur rappresentando essi usi del suolo
 differenti, le loro coperture del suolo sono effettivamente analoghe,
 il che ne rende difficile la discriminazione mediante dati
-satellitari, soprattutto caartterizzati da pochi canali spettrali
+satellitari, soprattutto caratterizzati da pochi canali spettrali
 (solo tre nel nostro caso).
 \end{itemize}
 
@@ -308,7 +308,7 @@ distinguere le aree urbane di diversa densità.\\
 
 L'analisi quantitativa della matrice di confusione conferma quanto già
 ipotizzato precedentemente, ovvero che le strade sono quasi del tutto
-perse registrando un'accuratezza di circa $11\%$, a scapito sopratutto
+perse registrando un'accuratezza di circa $11\%$, a scapito soprattutto
 dell'area urbana. \\
 
 Si è registrata una buona accuratezza nelle classificazioni di aree
@@ -351,7 +351,7 @@ sintetizza i miglioramenti/peggioramenti classe per classe.
 
 \includegraphics[width=1\textwidth]{Confronto_Amiens2006_5m}
 
-\caption{Differenze tra le accuratezze classe per classe con e
+\caption{Differenze fra il numero dei campioni di test classificati correttamente classe per classe con e
 senza estrazione di \emph{feature} HOG per il data set \emph{Amiens 2006 - 5m - 10 classi}}
 
 \label{fig:Confronto_Amiens2006_5m}
@@ -369,7 +369,7 @@ molti pixel urbani vengono etichettati come appartenenti ad altre
 classi (in particolare la classe 10, gli specchi d'acqua,
 rappresentata in bianco nelle immagini). Il miglioramento ottenuto per
 le classi urbane è coerente con l'informazione direzionale estratta
-dalle feature HOG che risulta utile soprattutto ai fini della
+dalle \emph{feature} HOG che risulta utile soprattutto ai fini della
 discriminazione di classi caratterizzate da struttura geometrica.
 
 \begin{figure}[!ht]
@@ -388,7 +388,7 @@ discriminazione di classi caratterizzate da struttura geometrica.
 
 \caption{Confronto su una porzione dell'area urbana di $250\times250$
 pixel della mappa di classificazione con e senza estrazione di
-\emph{feature} HOG sul \emph{dataset} Amiens 2006 a $5$ m(il nero rappresenta gli "edifici", mentre i pixel bianchi corrispondono alla classe "acqua")}
+\emph{feature} HOG sul \emph{dataset} Amiens 2006 a $5$ m (i livelli di grigio distinti rappresentano etichette di classi differenti)}
 
 \label{fig:confrontoAmiens2006_5m}
 
@@ -408,7 +408,7 @@ pixel della mappa di classificazione con e senza estrazione di
 
 \'E riportata in Figura \ref{fig:ClassMap_Amiens2012_2_5m_noroads} la
 mappa di classificazione con \emph{feature} HOG, in aggiunta alle tre
-feature spettrali, in configurazione di $4$ \emph{bins}, celle di
+\emph{feature} spettrali, in configurazione di $4$ \emph{bin}, celle di
 dimensione $2\times2$ pixel e blocchi di normalizzazione con
 $16\times16$ pixel, con filtraggio gaussiano sia per l'immagine in
 ingresso che per le immagini HOG.
@@ -441,7 +441,7 @@ acquisizione ha reso altamente più complesso la discriminazione delle
 corrispondono qui a coperture del suolo che presentano similarità col
 suolo nudo, avendo l'acquisizione avuto luogo in un periodo dell'anno
 in cui gli alberi avevano perso le foglie e le aree agricole non
-presentavano gia più vegetazione coltivata evidente.\\
+presentavano già più vegetazione coltivata evidente.\\
 
 Già con un'analisi della mappa, si osserva che qualitativamente il
 risultato sembra peggiorare rispetto all'esperimento precedente. Due
@@ -477,8 +477,8 @@ viene presentata la matrice di confusione di questo esperimento. \\
 
 \includegraphics[width=1\textwidth]{Matrice_di_confusione_Amiens2012_5m_HOG_without_roads}
 
-\caption{Matrice di confusione della sessione di classificazione del
-\emph{dataset} \emph{Amiens 2012 - 5m - 7 classi}}
+\caption{Matrice di confusione associata alla classificazione del
+dataset \emph{Amiens 2012 - 2.5m - 7 classi} mediante l'applicazione di SVM a feature spettrali e HOG}
 
 \label{fig:Matrice_di_confusione_Amiens2012_5m_HOG_without_roads}
 \end{figure}
@@ -517,7 +517,7 @@ suolo.\\
 
 \includegraphics[width=1\textwidth]{Confronto_Amiens2012_con_e_senza_hog}
 
-\caption{Differenze tra le accuratezze classe per classe con e
+\caption{Differenze tra il numero di campioni di test classificati correttamente classe per classe con e
 senza estrazione di \emph{feature} per il \emph{dataset} Amiens 2012 a
 $2.5$ m}
 
@@ -534,7 +534,7 @@ correttamente: in particolare in Figura
 miglioramento ($+2537\%$) per le strade, benché in termini assoluti
 restino ancora ben poco classificate ($10\%$) probabilmente a causa
 della presenza di ombre . Si è rilevato, tuttavia, un leggero
-peggioramento ($-16\%$) nell' individuazione degli edifici. \\ In
+peggioramento ($-16\%$) nell'individuazione degli edifici. \\ In
 conclusione, la presenza degli HOG migliora anche OA e AA seppure in
 maniera limitata. \\
 
@@ -597,7 +597,7 @@ strade.
 \caption{Confronto su una porzione della periferia di Amiens di
 $250\times250$ pixel della mappa di classificazione con e senza
 estrazione di \emph{feature} HOG e con l'aggiunta della cartografia
-stradale sul \emph{dataset} Amiens 2012 a $2.5$ m. }
+stradale sul \emph{dataset} Amiens 2012 a $2.5$ m (i livelli di grigio distinti rappresentano etichette di classi differenti)}
 \label{fig:confrontoAmiens2012_2_5m}
 \end{figure}
 
@@ -607,7 +607,7 @@ stradale sul \emph{dataset} Amiens 2012 a $2.5$ m. }
 
 \'E riportata in Figura \ref{fig:ClassMap_Amiens2006_2_5m_roadsandhog}
 la mappa di classificazione con \emph{feature} HOG aggiuntive in
-configurazione di $4$ \emph{bins}, celle di dimensione $2\times2$
+configurazione di $4$ \emph{bin}, celle di dimensione $2\times2$
 pixel e blocchi di normalizzazione con $16\times16$ pixel, con
 filtraggio gaussiano sia per l'immagine in ingresso che per le
 immagini HOG e con l'aggiunta della \emph{feature} cartografica delle
@@ -621,13 +621,13 @@ strade di Amiens.
 \\
 \subfigure{
 \includegraphics[width=0.35\textwidth]{Leggenda_7classi}}
-\caption{Mappa di classificazione del dataset \emph{Amiens 2006 - 2.5m
+\caption{Mappa di classificazione ottenuta applicando SVM a feature spettrali e HOG per il dataset \emph{Amiens 2006 - 2.5m
 - 7 classi}}
 \label{fig:ClassMap_Amiens2006_2_5m_roadsandhog}
 
 \end{figure}
 
-Su questo \emph{dataset} i risultati sono stati interessanti, poichè
+Su questo \emph{dataset} i risultati sono stati interessanti, poiché
 si differenziano notevolmente dai due casi studiati in precedenza.\\
 
 E' innanzitutto importante far notare che questo esperimento ha
@@ -648,8 +648,8 @@ pixel vengono spesso confusi tra le due categorie.
 
 \includegraphics[width=1\textwidth]{Matrice_di_confusione_Amiens2006_2_5m_HOG_and_roads}
 
-\caption{Mappa di classificazione del dataset \emph{Amiens 2006 - 2.5m
-- 7 classi}}
+\caption{Matrice di confusione associata alla classificazione del
+dataset \emph{Amiens 2006 - 2.5m - 7 classi} mediante l'applicazione di SVM a feature spettrali e HOG}
 
 \label{fig:Matrice_di_confusione_Amiens2006_2_5m_HOG_and_roads}
 
@@ -657,13 +657,13 @@ pixel vengono spesso confusi tra le due categorie.
 
 In Figura \ref{fig:Confronto_Amiens2006_2_5m_con_e_senza_hog_e_roads}
 vengono proposte le variazioni di prestazioni classe per classe nel
-confronto fra questo risultato e quello ottenuto senza feature HOG.\\
+confronto fra questo risultato e quello ottenuto senza \emph{feature} HOG.\\
 
 \begin{figure}[!ht]
 
 \includegraphics[width=1\textwidth]{Confronto_Amiens2006_2_5m_con_e_senza_hog_e_roads}
 
-\caption{Differenze tra le accuratezze classe per classe con e
+\caption{Differenze tra il numero di campioni di test classificati correttamente classe per classe con e
 senza estrazione di \emph{feature} per il \emph{dataset} Amiens 2006 a
 $2.5$ m}
 
